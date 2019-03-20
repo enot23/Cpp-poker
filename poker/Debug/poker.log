@@ -1,0 +1,3 @@
+﻿  poker.cpp
+c:\users\marin\desktop\документи\ather\poker\poker\poker.cpp(15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  poker.vcxproj -> C:\Users\marin\Desktop\Документи\ather\poker\Debug\poker.exe
