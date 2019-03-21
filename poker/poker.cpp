@@ -8,7 +8,7 @@
 #include <ctime>
 using namespace std;
 const string karty[9] = { "6","7","8","9","10","J","Q","K","T" };
-int moneyo = 1000, moneyu = 1000;
+int moneyo = 1000, moneyu = 1000, bank = 0;
 void vvidcart1();
 void vvidcartm(int(*)[2], int, int);
 void flop(int(*)[5], int, int);
@@ -137,31 +137,29 @@ int  main() {
 	//	cout << endl;
 	//
 	//}
-
+   char Flop;
 	char pre_flop;
-	cout << "Fold(z) / Chick(x) / Raise(c):"<<endl;
-	cin >> pre_flop;
-	cout << endl;
-	//дії після роздачі двох карт
+	char Torn;
+	
+	
+	
+
 	flop(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
-	cout << endl;
-
 	//дії після флопу
-	char flop;
-	cout << "Fold(z) / Chick(x) / Raise(c):" << endl;
-	cin >> flop;
+	
+	
+
 	torn(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
-	cout << endl;
+
 
 	//дії після тьорну
-	char torn;
-	cout << "Fold(z) / Chick(x) / Raise(c):" << endl;
-	cin >> torn;
+	
+	
 	river(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
-	cout<<endl;
+
 
 
 		return 0;
@@ -185,11 +183,12 @@ void vvidcart1(){
 			cout << "    ___________                                          ++++++                                                    " << endl;
 			cout << "    |%%%%%%%%%|                                        ++      ++                                                  " << endl;
 			cout << "    |%%%%%%%%%|                                      ++          ++                                                " << endl;
-			cout << "    |%%%%%%%%%|                                      +     10k    +                                                " << endl;
+			cout << "    |%%%%%%%%%|                                      +    "<<bank<<"                                               " << endl;
 			cout << "    |%%%%%%%%%|                                      ++          ++                                                " << endl;
 			cout << "    |%%%%%%%%%|                                        ++      ++                                                  " << endl;
 			cout << "    |%%%%%%%%%|                                          ++++++                                                    " << endl;
 		}
+		//перевірка де виводити банк
 		else {
 			cout << endl;
 			cout << "    ___________   " << endl;
@@ -980,48 +979,146 @@ void flop	  (int karu[][5], int r, int s) {
 	}
 	for (int i = 1; i < 3; i++) {
 		if (karty[karu[0][i]] == "10") {
-			if (karu[1][i] == 0) {
-				cout << endl;
-				cout << "     __   __                                   " << endl;
-				cout << "    /  \\_/  \\                                " << endl;
-				cout << "    |       |                                   " << endl;
-				cout << "    \\   " << karty[karu[0][i]] << "  /         " << endl;
-				cout << "     \\     /                                   " << endl;
-				cout << "      \\   /                                    " << endl;
-				cout << "       \\ /                                     " << endl;
+			if (i == 1) {
+
+
+				if (karu[1][i] == 0) {
+					cout << endl;
+					cout << "     __   __                                        ++++++          " << endl;
+					cout << "    /  \\_/  \\                                     ++      ++        " << endl;
+					cout << "    |       |                                   ++          ++      " << endl;
+					cout << "    \\   " << karty[karu[0][i]] << "  /                                   +    " << bank << " " << endl;
+					cout << "     \\     /                                    ++          ++      " << endl;
+					cout << "      \\   /                                       ++      ++        " << endl;
+					cout << "       \\ /                                          ++++++          " << endl;
+				}
+				else if (karu[1][i] == 1) {
+					cout << endl;
+					cout << "       / \\                                           ++++++         " << endl;
+					cout << "      /   \\                                        ++      ++       " << endl;
+					cout << "     /     \\                                     ++          ++     " << endl;
+					cout << "    /  " << karty[karu[0][i]] << "   \\                                    +    " << bank << "" << endl;
+					cout << "    |   _   |                                    ++          ++     " << endl;
+					cout << "    \\__/^\\__/                                      ++      ++       " << endl;
+					cout << "       /_\\                                           ++++++         " << endl;
+				}
+				else if (karu[1][i] == 2) {
+					cout << endl;
+					cout << "        _                                            ++++++         " << endl;
+					cout << "       ( )                                         ++      ++       " << endl;
+					cout << "     __/ \\__                                     ++          ++     " << endl;
+					cout << "    (__" << karty[karu[0][i]] << " __)                                    +    " << bank << "" << endl;
+					cout << "       \\ /                                       ++          ++     " << endl;
+					cout << "       / \\                                         ++      ++       " << endl;
+					cout << "      /___\\                                          ++++++         " << endl;
+				}
+				else if (karu[1][i] == 3) {
+					cout << endl;
+					cout << "       / \\                                           ++++++          " << endl;
+					cout << "      /   \\                                        ++      ++        " << endl;
+					cout << "     /     \\                                     ++          ++      " << endl;
+					cout << "    /  " << karty[karu[0][i]] << "   \\                                    +    " << bank << " " << endl;
+					cout << "    \\       /                                    ++          ++      " << endl;
+					cout << "     \\     /                                       ++      ++        " << endl;
+					cout << "      \\   /                                          ++++++          " << endl;
+				}
+				
 			}
-			else if (karu[1][i] == 1) {
-				cout << endl;
-				cout << "       / \\                                     " << endl;
-				cout << "      /   \\                                    " << endl;
-				cout << "     /     \\                                   " << endl;
-				cout << "    /  " << karty[karu[0][i]] << "   \\         " << endl;
-				cout << "    |   _   |                                   " << endl;
-				cout << "    \\__/^\\__/                                 " << endl;
-				cout << "       /_\\                                     " << endl;
-			}
-			else if (karu[1][i] == 2) {
-				cout << endl;
-				cout << "        _                                       " << endl;
-				cout << "       ( )                                      " << endl;
-				cout << "     __/ \\__                                   " << endl;
-				cout << "    (__" << karty[karu[0][i]] << " __)          " << endl;
-				cout << "       \\ /                                     " << endl;
-				cout << "       / \\                                     " << endl;
-				cout << "      /___\\                                    " << endl;
-			}
-			else if (karu[1][i] == 3) {
-				cout << endl;
-				cout << "       / \\                                    " << endl;
-				cout << "      /   \\                                   " << endl;
-				cout << "     /     \\                                  " << endl;
-				cout << "    /  " << karty[karu[0][i]] << "   \\        " << endl;
-				cout << "    \\       /                                 " << endl;
-				cout << "     \\     /                                  " << endl;
-				cout << "      \\   /                                   " << endl;
+			//перевірка де виводити банк
+			else
+			{
+
+
+				if (karu[1][i] == 0) {
+					cout << endl;
+					cout << "     __   __                                   " << endl;
+					cout << "    /  \\_/  \\                                " << endl;
+					cout << "    |       |                                   " << endl;
+					cout << "    \\   " << karty[karu[0][i]] << "  /         " << endl;
+					cout << "     \\     /                                   " << endl;
+					cout << "      \\   /                                    " << endl;
+					cout << "       \\ /                                     " << endl;
+				}
+				else if (karu[1][i] == 1) {
+					cout << endl;
+					cout << "       / \\                                     " << endl;
+					cout << "      /   \\                                    " << endl;
+					cout << "     /     \\                                   " << endl;
+					cout << "    /  " << karty[karu[0][i]] << "   \\         " << endl;
+					cout << "    |   _   |                                   " << endl;
+					cout << "    \\__/^\\__/                                 " << endl;
+					cout << "       /_\\                                     " << endl;
+				}
+				else if (karu[1][i] == 2) {
+					cout << endl;
+					cout << "        _                                       " << endl;
+					cout << "       ( )                                      " << endl;
+					cout << "     __/ \\__                                   " << endl;
+					cout << "    (__" << karty[karu[0][i]] << " __)          " << endl;
+					cout << "       \\ /                                     " << endl;
+					cout << "       / \\                                     " << endl;
+					cout << "      /___\\                                    " << endl;
+				}
+				else if (karu[1][i] == 3) {
+					cout << endl;
+					cout << "       / \\                                    " << endl;
+					cout << "      /   \\                                   " << endl;
+					cout << "     /     \\                                  " << endl;
+					cout << "    /  " << karty[karu[0][i]] << "   \\        " << endl;
+					cout << "    \\       /                                 " << endl;
+					cout << "     \\     /                                  " << endl;
+					cout << "      \\   /                                   " << endl;
+				}
 			}
 		}
 		else {
+			if (i == 1) {
+
+
+				if (karu[1][i] == 0) {
+					cout << endl;
+					cout << "     __   __                                        ++++++          " << endl;
+					cout << "    /  \\_/  \\                                     ++      ++        " << endl;
+					cout << "    |       |                                   ++          ++      " << endl;
+					cout << "    \\    " << karty[karu[0][i]] << "  /                                   +    " << bank << " " << endl;
+					cout << "     \\     /                                    ++          ++      " << endl;
+					cout << "      \\   /                                       ++      ++        " << endl;
+					cout << "       \\ /                                          ++++++          " << endl;
+				}
+				else if (karu[1][i] == 1) {
+					cout << endl;
+					cout << "       / \\                                           ++++++         " << endl;
+					cout << "      /   \\                                        ++      ++       " << endl;
+					cout << "     /     \\                                     ++          ++     " << endl;
+					cout << "    /   " << karty[karu[0][i]] << "   \\                                    +    " << bank << "" << endl;
+					cout << "    |   _   |                                    ++          ++     " << endl;
+					cout << "    \\__/^\\__/                                      ++      ++       " << endl;
+					cout << "       /_\\                                           ++++++         " << endl;
+				}
+				else if (karu[1][i] == 2) {
+					cout << endl;
+					cout << "        _                                            ++++++         " << endl;
+					cout << "       ( )                                         ++      ++       " << endl;
+					cout << "     __/ \\__                                     ++          ++     " << endl;
+					cout << "    (__ " << karty[karu[0][i]] << " __)                                    +    " << bank << "" << endl;
+					cout << "       \\ /                                       ++          ++     " << endl;
+					cout << "       / \\                                         ++      ++       " << endl;
+					cout << "      /___\\                                          ++++++         " << endl;
+				}
+				else if (karu[1][i] == 3) {
+					cout << endl;
+					cout << "       / \\                                           ++++++          " << endl;
+					cout << "      /   \\                                        ++      ++        " << endl;
+					cout << "     /     \\                                     ++          ++      " << endl;
+					cout << "    /   " << karty[karu[0][i]] << "   \\                                    +    " << bank << " " << endl;
+					cout << "    \\       /                                    ++          ++      " << endl;
+					cout << "     \\     /                                       ++      ++        " << endl;
+					cout << "      \\   /                                          ++++++          " << endl;
+				}
+
+			}
+			//перевірка де виводити банк
+			else {
 			if (karu[1][i] == 0) {
 				cout << endl;
 				cout << "     __   __                                   " << endl;
@@ -1032,35 +1129,36 @@ void flop	  (int karu[][5], int r, int s) {
 				cout << "      \\   /                                    " << endl;
 				cout << "       \\ /                                     " << endl;
 			}
-			else if (karu[1][i] == 1) {	
+			else if (karu[1][i] == 1) {
 				cout << endl;
-				cout << "       / \\                                     "<<endl;     
-				cout << "      /   \\                                    "<<endl;     
-				cout << "     /     \\                                   "<<endl;     
-				cout << "    /   " << karty[karu[0][i]] << "   \\        "<<endl;     
-				cout << "    |   _   |                                   "<<endl;     
-				cout << "    \\__/^\\__/                                 "<<endl;     
+				cout << "       / \\                                     " << endl;
+				cout << "      /   \\                                    " << endl;
+				cout << "     /     \\                                   " << endl;
+				cout << "    /   " << karty[karu[0][i]] << "   \\        " << endl;
+				cout << "    |   _   |                                   " << endl;
+				cout << "    \\__/^\\__/                                 " << endl;
 				cout << "       /_\\                                     " << endl;
 			}
 			else if (karu[1][i] == 2) {
 				cout << endl;
-				cout << "        _                                        "<<endl;
-				cout << "       ( )                                       "<<endl;
-				cout << "     __/ \\__                                    "<<endl;
-				cout << "    (__ " << karty[karu[0][i]] << " __)          "<<endl;
-				cout << "       \\ /                                      "<<endl;
-				cout << "       / \\                                      "<<endl;
-				cout << "      /___\\                                     "<<endl;
+				cout << "        _                                        " << endl;
+				cout << "       ( )                                       " << endl;
+				cout << "     __/ \\__                                    " << endl;
+				cout << "    (__ " << karty[karu[0][i]] << " __)          " << endl;
+				cout << "       \\ /                                      " << endl;
+				cout << "       / \\                                      " << endl;
+				cout << "      /___\\                                     " << endl;
 			}
-			else if (karu[1][i] == 3){
+			else if (karu[1][i] == 3) {
 				cout << endl;
-				cout << "       / \\                                     "<<endl;
-				cout << "      /   \\                                    "<<endl;
-				cout << "     /     \\                                   "<<endl;
-				cout << "    /   " << karty[karu[0][i]] << "   \\        "<<endl;
-				cout << "    \\       /                                  "<<endl;
-				cout << "     \\     /                                   "<<endl;
-				cout << "      \\   /                                    "<<endl;
+				cout << "       / \\                                     " << endl;
+				cout << "      /   \\                                    " << endl;
+				cout << "     /     \\                                   " << endl;
+				cout << "    /   " << karty[karu[0][i]] << "   \\        " << endl;
+				cout << "    \\       /                                  " << endl;
+				cout << "     \\     /                                   " << endl;
+				cout << "      \\   /                                    " << endl;
+			}
 			}
 		}
 	}
@@ -1166,7 +1264,54 @@ void torn	  (int karu[][5], int r, int s) {
 	}
 	for (int i = 1; i < 4; i++) {
 		if (karty[karu[0][i]] == "10") {
-			if (karu[1][i] == 0) {
+			if (i == 1) {
+
+
+				if (karu[1][i] == 0) {
+					cout << endl;
+					cout << "     __   __                                        ++++++          " << endl;
+					cout << "    /  \\_/  \\                                     ++      ++        " << endl;
+					cout << "    |       |                                   ++          ++      " << endl;
+					cout << "    \\   " << karty[karu[0][i]] << "  /                                   +    " << bank << " " << endl;
+					cout << "     \\     /                                    ++          ++      " << endl;
+					cout << "      \\   /                                       ++      ++        " << endl;
+					cout << "       \\ /                                          ++++++          " << endl;
+				}
+				else if (karu[1][i] == 1) {
+					cout << endl;
+					cout << "       / \\                                           ++++++         " << endl;
+					cout << "      /   \\                                        ++      ++       " << endl;
+					cout << "     /     \\                                     ++          ++     " << endl;
+					cout << "    /  " << karty[karu[0][i]] << "   \\                                    +    " << bank << "" << endl;
+					cout << "    |   _   |                                    ++          ++     " << endl;
+					cout << "    \\__/^\\__/                                      ++      ++       " << endl;
+					cout << "       /_\\                                           ++++++         " << endl;
+				}
+				else if (karu[1][i] == 2) {
+					cout << endl;
+					cout << "        _                                            ++++++         " << endl;
+					cout << "       ( )                                         ++      ++       " << endl;
+					cout << "     __/ \\__                                     ++          ++     " << endl;
+					cout << "    (__" << karty[karu[0][i]] << " __)                                    +    " << bank << "" << endl;
+					cout << "       \\ /                                       ++          ++     " << endl;
+					cout << "       / \\                                         ++      ++       " << endl;
+					cout << "      /___\\                                          ++++++         " << endl;
+				}
+				else if (karu[1][i] == 3) {
+					cout << endl;
+					cout << "       / \\                                           ++++++          " << endl;
+					cout << "      /   \\                                        ++      ++        " << endl;
+					cout << "     /     \\                                     ++          ++      " << endl;
+					cout << "    /  " << karty[karu[0][i]] << "   \\                                    +    " << bank << " " << endl;
+					cout << "    \\       /                                    ++          ++      " << endl;
+					cout << "     \\     /                                       ++      ++        " << endl;
+					cout << "      \\   /                                          ++++++          " << endl;
+				}
+
+			}
+			//перевірка де виводити банк
+			else {
+				if (karu[1][i] == 0) {
 				cout << endl;
 				cout << "     __   __                                   " << endl;
 				cout << "    /  \\_/  \\                                " << endl;
@@ -1176,7 +1321,7 @@ void torn	  (int karu[][5], int r, int s) {
 				cout << "      \\   /                                    " << endl;
 				cout << "       \\ /                                     " << endl;
 			}
-			else if (karu[1][i] == 1) {
+				else if (karu[1][i] == 1) {
 				cout << endl;
 				cout << "       / \\                                     " << endl;
 				cout << "      /   \\                                    " << endl;
@@ -1186,7 +1331,7 @@ void torn	  (int karu[][5], int r, int s) {
 				cout << "    \\__/^\\__/                                 " << endl;
 				cout << "       /_\\                                     " << endl;
 			}
-			else if (karu[1][i] == 2) {
+				else if (karu[1][i] == 2) {
 				cout << endl;
 				cout << "        _                                       " << endl;
 				cout << "       ( )                                      " << endl;
@@ -1196,7 +1341,7 @@ void torn	  (int karu[][5], int r, int s) {
 				cout << "       / \\                                     " << endl;
 				cout << "      /___\\                                    " << endl;
 			}
-			else if (karu[1][i] == 3) {
+				else if (karu[1][i] == 3) {
 				cout << endl;
 				cout << "       / \\                                    " << endl;
 				cout << "      /   \\                                   " << endl;
@@ -1206,48 +1351,97 @@ void torn	  (int karu[][5], int r, int s) {
 				cout << "     \\     /                                  " << endl;
 				cout << "      \\   /                                   " << endl;
 			}
+			}
 		}
 		else {
-			if (karu[1][i] == 0) {
-				cout << endl;
-				cout << "     __   __                                   " << endl;
-				cout << "    /  \\_/  \\                                " << endl;
-				cout << "    |       |                                   " << endl;
-				cout << "    \\   " << karty[karu[0][i]] << "   /        " << endl;
-				cout << "     \\     /                                   " << endl;
-				cout << "      \\   /                                    " << endl;
-				cout << "       \\ /                                     " << endl;
+			if (i == 1) {
+
+
+				if (karu[1][i] == 0) {
+					cout << endl;
+					cout << "     __   __                                        ++++++          " << endl;
+					cout << "    /  \\_/  \\                                     ++      ++        " << endl;
+					cout << "    |       |                                   ++          ++      " << endl;
+					cout << "    \\    " << karty[karu[0][i]] << "  /                                   +    " << bank << " " << endl;
+					cout << "     \\     /                                    ++          ++      " << endl;
+					cout << "      \\   /                                       ++      ++        " << endl;
+					cout << "       \\ /                                          ++++++          " << endl;
+				}
+				else if (karu[1][i] == 1) {
+					cout << endl;
+					cout << "       / \\                                           ++++++         " << endl;
+					cout << "      /   \\                                        ++      ++       " << endl;
+					cout << "     /     \\                                     ++          ++     " << endl;
+					cout << "    /   " << karty[karu[0][i]] << "   \\                                    +    " << bank << "" << endl;
+					cout << "    |   _   |                                    ++          ++     " << endl;
+					cout << "    \\__/^\\__/                                      ++      ++       " << endl;
+					cout << "       /_\\                                           ++++++         " << endl;
+				}
+				else if (karu[1][i] == 2) {
+					cout << endl;
+					cout << "        _                                            ++++++         " << endl;
+					cout << "       ( )                                         ++      ++       " << endl;
+					cout << "     __/ \\__                                     ++          ++     " << endl;
+					cout << "    (__ " << karty[karu[0][i]] << " __)                                    +    " << bank << "" << endl;
+					cout << "       \\ /                                       ++          ++     " << endl;
+					cout << "       / \\                                         ++      ++       " << endl;
+					cout << "      /___\\                                          ++++++         " << endl;
+				}
+				else if (karu[1][i] == 3) {
+					cout << endl;
+					cout << "       / \\                                           ++++++          " << endl;
+					cout << "      /   \\                                        ++      ++        " << endl;
+					cout << "     /     \\                                     ++          ++      " << endl;
+					cout << "    /   " << karty[karu[0][i]] << "   \\                                    +    " << bank << " " << endl;
+					cout << "    \\       /                                    ++          ++      " << endl;
+					cout << "     \\     /                                       ++      ++        " << endl;
+					cout << "      \\   /                                          ++++++          " << endl;
+				}
+
 			}
-			else if (karu[1][i] == 1) {
-				cout << endl;
-				cout << "       / \\                                     " << endl;
-				cout << "      /   \\                                    " << endl;
-				cout << "     /     \\                                   " << endl;
-				cout << "    /   " << karty[karu[0][i]] << "   \\        " << endl;
-				cout << "    |   _   |                                   " << endl;
-				cout << "    \\__/^\\__/                                 " << endl;
-				cout << "       /_\\                                     " << endl;
-			}
-			else if (karu[1][i] == 2) {
-				cout << endl;
-				cout << "        _                                        " << endl;
-				cout << "       ( )                                       " << endl;
-				cout << "     __/ \\__                                    " << endl;
-				cout << "    (__ " << karty[karu[0][i]] << " __)          " << endl;
-				cout << "       \\ /                                      " << endl;
-				cout << "       / \\                                      " << endl;
-				cout << "      /___\\                                     " << endl;
-			}
-			else if (karu[1][i] == 3) {
-				cout << endl;
-				cout << "       / \\                                     " << endl;
-				cout << "      /   \\                                    " << endl;
-				cout << "     /     \\                                   " << endl;
-				cout << "    /   " << karty[karu[0][i]] << "   \\        " << endl;
-				cout << "    \\       /                                  " << endl;
-				cout << "     \\     /                                   " << endl;
-				cout << "      \\   /                                    " << endl;
-			}
+			//перевірка де виводити банк
+			 else {
+				if (karu[1][i] == 0) {
+				 cout << endl;
+				 cout << "     __   __                                   " << endl;
+				 cout << "    /  \\_/  \\                                " << endl;
+				 cout << "    |       |                                   " << endl;
+				 cout << "    \\   " << karty[karu[0][i]] << "   /        " << endl;
+				 cout << "     \\     /                                   " << endl;
+				 cout << "      \\   /                                    " << endl;
+				 cout << "       \\ /                                     " << endl;
+			 }
+				else if (karu[1][i] == 1) {
+				 cout << endl;
+				 cout << "       / \\                                     " << endl;
+				 cout << "      /   \\                                    " << endl;
+				 cout << "     /     \\                                   " << endl;
+				 cout << "    /   " << karty[karu[0][i]] << "   \\        " << endl;
+				 cout << "    |   _   |                                   " << endl;
+				 cout << "    \\__/^\\__/                                 " << endl;
+				 cout << "       /_\\                                     " << endl;
+			 }
+				else if (karu[1][i] == 2) {
+				 cout << endl;
+				 cout << "        _                                        " << endl;
+				 cout << "       ( )                                       " << endl;
+				 cout << "     __/ \\__                                    " << endl;
+				 cout << "    (__ " << karty[karu[0][i]] << " __)          " << endl;
+				 cout << "       \\ /                                      " << endl;
+				 cout << "       / \\                                      " << endl;
+				 cout << "      /___\\                                     " << endl;
+			 }
+				else if (karu[1][i] == 3) {
+				 cout << endl;
+				 cout << "       / \\                                     " << endl;
+				 cout << "      /   \\                                    " << endl;
+				 cout << "     /     \\                                   " << endl;
+				 cout << "    /   " << karty[karu[0][i]] << "   \\        " << endl;
+				 cout << "    \\       /                                  " << endl;
+				 cout << "     \\     /                                   " << endl;
+				 cout << "      \\   /                                    " << endl;
+			 }
+			 }
 		}
 	}
 	cout << endl;
@@ -1347,9 +1541,57 @@ void river	  (int karu[][5], int r, int s) {
 			cout << "       \\   /                                                                                                |%%%%%%%%%|   |%%%%%%%%%|" << endl;
 		}
 	}
+
 	for (int i = 1; i < 5; i++) {
 		if (karty[karu[0][i]] == "10") {
-			if (karu[1][i] == 0) {
+			if (i == 1) {
+
+
+				if (karu[1][i] == 0) {
+					cout << endl;
+					cout << "     __   __                                        ++++++          " << endl;
+					cout << "    /  \\_/  \\                                     ++      ++        " << endl;
+					cout << "    |       |                                   ++          ++      " << endl;
+					cout << "    \\   " << karty[karu[0][i]] << "  /                                   +    " << bank << " " << endl;
+					cout << "     \\     /                                    ++          ++      " << endl;
+					cout << "      \\   /                                       ++      ++        " << endl;
+					cout << "       \\ /                                          ++++++          " << endl;
+				}
+				else if (karu[1][i] == 1) {
+					cout << endl;
+					cout << "       / \\                                           ++++++         " << endl;
+					cout << "      /   \\                                        ++      ++       " << endl;
+					cout << "     /     \\                                     ++          ++     " << endl;
+					cout << "    /  " << karty[karu[0][i]] << "   \\                                    +    " << bank << "" << endl;
+					cout << "    |   _   |                                    ++          ++     " << endl;
+					cout << "    \\__/^\\__/                                      ++      ++       " << endl;
+					cout << "       /_\\                                           ++++++         " << endl;
+				}
+				else if (karu[1][i] == 2) {
+					cout << endl;
+					cout << "        _                                            ++++++         " << endl;
+					cout << "       ( )                                         ++      ++       " << endl;
+					cout << "     __/ \\__                                     ++          ++     " << endl;
+					cout << "    (__" << karty[karu[0][i]] << " __)                                    +    " << bank << "" << endl;
+					cout << "       \\ /                                       ++          ++     " << endl;
+					cout << "       / \\                                         ++      ++       " << endl;
+					cout << "      /___\\                                          ++++++         " << endl;
+				}
+				else if (karu[1][i] == 3) {
+					cout << endl;
+					cout << "       / \\                                           ++++++          " << endl;
+					cout << "      /   \\                                        ++      ++        " << endl;
+					cout << "     /     \\                                     ++          ++      " << endl;
+					cout << "    /  " << karty[karu[0][i]] << "   \\                                    +    " << bank << " " << endl;
+					cout << "    \\       /                                    ++          ++      " << endl;
+					cout << "     \\     /                                       ++      ++        " << endl;
+					cout << "      \\   /                                          ++++++          " << endl;
+				}
+
+			}
+			else {
+
+				if (karu[1][i] == 0) {
 				cout << endl;
 				cout << "     __   __                                   " << endl;
 				cout << "    /  \\_/  \\                                " << endl;
@@ -1359,7 +1601,7 @@ void river	  (int karu[][5], int r, int s) {
 				cout << "      \\   /                                    " << endl;
 				cout << "       \\ /                                     " << endl;
 			}
-			else if (karu[1][i] == 1) {
+				else if (karu[1][i] == 1) {
 				cout << endl;
 				cout << "       / \\                                     " << endl;
 				cout << "      /   \\                                    " << endl;
@@ -1369,7 +1611,7 @@ void river	  (int karu[][5], int r, int s) {
 				cout << "    \\__/^\\__/                                 " << endl;
 				cout << "       /_\\                                     " << endl;
 			}
-			else if (karu[1][i] == 2) {
+				else if (karu[1][i] == 2) {
 				cout << endl;
 				cout << "        _                                       " << endl;
 				cout << "       ( )                                      " << endl;
@@ -1379,7 +1621,7 @@ void river	  (int karu[][5], int r, int s) {
 				cout << "       / \\                                     " << endl;
 				cout << "      /___\\                                    " << endl;
 			}
-			else if (karu[1][i] == 3) {
+				else if (karu[1][i] == 3) {
 				cout << endl;
 				cout << "       / \\                                    " << endl;
 				cout << "      /   \\                                   " << endl;
@@ -1389,9 +1631,57 @@ void river	  (int karu[][5], int r, int s) {
 				cout << "     \\     /                                  " << endl;
 				cout << "      \\   /                                   " << endl;
 			}
+			}
 		}
 		else {
-			if (karu[1][i] == 0) {
+			if (i == 1) {
+
+
+				if (karu[1][i] == 0) {
+					cout << endl;
+					cout << "     __   __                                        ++++++          " << endl;
+					cout << "    /  \\_/  \\                                     ++      ++        " << endl;
+					cout << "    |       |                                   ++          ++      " << endl;
+					cout << "    \\    " << karty[karu[0][i]] << "  /                                   +    " << bank << " " << endl;
+					cout << "     \\     /                                    ++          ++      " << endl;
+					cout << "      \\   /                                       ++      ++        " << endl;
+					cout << "       \\ /                                          ++++++          " << endl;
+				}
+				else if (karu[1][i] == 1) {
+					cout << endl;
+					cout << "       / \\                                           ++++++         " << endl;
+					cout << "      /   \\                                        ++      ++       " << endl;
+					cout << "     /     \\                                     ++          ++     " << endl;
+					cout << "    /   " << karty[karu[0][i]] << "   \\                                    +    " << bank << "" << endl;
+					cout << "    |   _   |                                    ++          ++     " << endl;
+					cout << "    \\__/^\\__/                                      ++      ++       " << endl;
+					cout << "       /_\\                                           ++++++         " << endl;
+				}
+				else if (karu[1][i] == 2) {
+					cout << endl;
+					cout << "        _                                            ++++++         " << endl;
+					cout << "       ( )                                         ++      ++       " << endl;
+					cout << "     __/ \\__                                     ++          ++     " << endl;
+					cout << "    (__ " << karty[karu[0][i]] << " __)                                    +    " << bank << "" << endl;
+					cout << "       \\ /                                       ++          ++     " << endl;
+					cout << "       / \\                                         ++      ++       " << endl;
+					cout << "      /___\\                                          ++++++         " << endl;
+				}
+				else if (karu[1][i] == 3) {
+					cout << endl;
+					cout << "       / \\                                           ++++++          " << endl;
+					cout << "      /   \\                                        ++      ++        " << endl;
+					cout << "     /     \\                                     ++          ++      " << endl;
+					cout << "    /   " << karty[karu[0][i]] << "   \\                                    +    " << bank << " " << endl;
+					cout << "    \\       /                                    ++          ++      " << endl;
+					cout << "     \\     /                                       ++      ++        " << endl;
+					cout << "      \\   /                                          ++++++          " << endl;
+				}
+
+			}
+			//перевірка де виводити банк
+			else {
+				if (karu[1][i] == 0) {
 				cout << endl;
 				cout << "     __   __                                   " << endl;
 				cout << "    /  \\_/  \\                                " << endl;
@@ -1401,7 +1691,7 @@ void river	  (int karu[][5], int r, int s) {
 				cout << "      \\   /                                    " << endl;
 				cout << "       \\ /                                     " << endl;
 			}
-			else if (karu[1][i] == 1) {
+				else if (karu[1][i] == 1) {
 				cout << endl;
 				cout << "       / \\                                     " << endl;
 				cout << "      /   \\                                    " << endl;
@@ -1411,7 +1701,7 @@ void river	  (int karu[][5], int r, int s) {
 				cout << "    \\__/^\\__/                                 " << endl;
 				cout << "       /_\\                                     " << endl;
 			}
-			else if (karu[1][i] == 2) {
+				else if (karu[1][i] == 2) {
 				cout << endl;
 				cout << "        _                                        " << endl;
 				cout << "       ( )                                       " << endl;
@@ -1421,7 +1711,7 @@ void river	  (int karu[][5], int r, int s) {
 				cout << "       / \\                                      " << endl;
 				cout << "      /___\\                                     " << endl;
 			}
-			else if (karu[1][i] == 3) {
+				else if (karu[1][i] == 3) {
 				cout << endl;
 				cout << "       / \\                                     " << endl;
 				cout << "      /   \\                                    " << endl;
@@ -1430,6 +1720,7 @@ void river	  (int karu[][5], int r, int s) {
 				cout << "    \\       /                                  " << endl;
 				cout << "     \\     /                                   " << endl;
 				cout << "      \\   /                                    " << endl;
+			}
 			}
 		}
 	}
