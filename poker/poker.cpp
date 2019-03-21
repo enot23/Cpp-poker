@@ -22,8 +22,9 @@ int  main() {
 	int karu[2][5];
 	int karo[2][2];
 	int karm[2][2];
-	bool vsee;
-    
+	bool vsee,fold,call;
+	int raise;
+	char hid;
 	
 	for (nk = 0; nk < 2; nk++) {
 		vsee = false;
@@ -115,50 +116,115 @@ int  main() {
 	int(*pkarm)[2] = karm;
 	int(*pkaro)[2] = karo;
 
-	vvidcart1();
-	vvidcartm(pkarm, 2, 2);
+	bank = 100;
+	moneyo -= bank / 2;
+	moneyu -= bank / 2;
+	
+	for (;;) {
+		vvidcart1();
+		vvidcartm(pkarm, 2, 2);
+		cout << "raise(z)/call(x)";
+		cin >> hid;
+		if (hid == 'z') {
+			cout << "vvedit na skiki pidv:";
+			cin >> raise;
+			if (raise > moneyu) {
+				bank += raise;
+				moneyu -= raise;
+				break;
+			}
+			else
+			{
+				continue;
+			}
+		}
+		else if (hid == 'x') {
+			cout << endl;
+			break;
+		}
+	}
+	
 
-	//for (i = 0; i < 2; i++) {
-	//	for (j = 0; j < 2; j++) {
-	//		cout << karo[i][j] << " ";
-	//	}
-	//	cout << endl;
-	//
-	//}
-	//for (i = 0; i < 2; i++) {
-	//	for (j = 0; j < 2; j++)
-	//		cout << karm[i][j] << " ";
-	//	cout << endl;
-	//
-	//}
-	//for (i = 0; i < 2; i++) {
-	//	for (j = 0; j < 5; j++)
-	//		cout << karu[i][j]<<" ";
-	//	cout << endl;
-	//
-	//}
-   char Flop;
-	char pre_flop;
-	char Torn;
+	
+  
 	
 	
 	
-
+	for(;;){
 	flop(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
+	cout << "raise(z)/call(x)";
+	cin >> hid;
+	if (hid == 'z') {
+		cout << "vvedit na skiki pidv:";
+		cin >> raise;
+		if (raise > moneyu) {
+			bank += raise;
+			moneyu -= raise;
+			break;
+		}
+		else
+		{
+			continue;
+		}
+	}
+	else if (hid == 'x') {
+		cout << endl;
+		break;
+	}
+	}
 	//дії після флопу
 	
 	
-
+	for(;;){
 	torn(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
-
+	cout << "raise(z)/call(x)";
+	cin >> hid;
+	if (hid == 'z') {
+		cout << "vvedit na skiki pidv:";
+		cin >> raise;
+		if (raise > moneyu) {
+			bank += raise;
+			moneyu -= raise;
+			break;
+		}
+		else
+		{
+			continue;
+		}
+	}
+	else if (hid == 'x') {
+		cout << endl;
+		break;
+	}
+	}
 
 	//дії після тьорну
 	
-	
+	for (;;){
 	river(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
+	cout << "raise(z)/call(x)";
+	cin >> hid;
+	if (hid == 'z') {
+		cout << "vvedit na skiki pidv:";
+		cin >> raise;
+		if (raise > moneyu) {
+			bank += raise;
+			moneyu -= raise;
+			break;
+		}
+		else
+		{
+			continue;
+		}
+	}
+	else if (hid == 'x') {
+		cout << endl;
+		break;
+	}
+	}
 
 
 
