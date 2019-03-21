@@ -8,6 +8,7 @@
 #include <ctime>
 using namespace std;
 const string karty[9] = { "6","7","8","9","10","J","Q","K","T" };
+int moneyo = 1000, moneyu = 1000;
 void vvidcart1();
 void vvidcartm(int(*)[2], int, int);
 void flop(int(*)[5], int, int);
@@ -16,11 +17,13 @@ void river(int(*)[5], int, int);
 
 int  main() {
 	int i, j, nk;
+
 	srand(time(NULL));
 	int karu[2][5];
 	int karo[2][2];
 	int karm[2][2];
 	bool vsee;
+    
 	
 	for (nk = 0; nk < 2; nk++) {
 		vsee = false;
@@ -115,47 +118,58 @@ int  main() {
 	vvidcart1();
 	vvidcartm(pkarm, 2, 2);
 
-	for (i = 0; i < 2; i++) {
-		for (j = 0; j < 2; j++) {
-			cout << karo[i][j] << " ";
-		}
-		cout << endl;
+	//for (i = 0; i < 2; i++) {
+	//	for (j = 0; j < 2; j++) {
+	//		cout << karo[i][j] << " ";
+	//	}
+	//	cout << endl;
+	//
+	//}
+	//for (i = 0; i < 2; i++) {
+	//	for (j = 0; j < 2; j++)
+	//		cout << karm[i][j] << " ";
+	//	cout << endl;
+	//
+	//}
+	//for (i = 0; i < 2; i++) {
+	//	for (j = 0; j < 5; j++)
+	//		cout << karu[i][j]<<" ";
+	//	cout << endl;
+	//
+	//}
 
-	}
-	for (i = 0; i < 2; i++) {
-		for (j = 0; j < 2; j++)
-			cout << karm[i][j] << " ";
-		cout << endl;
-
-	}
-	for (i = 0; i < 2; i++) {
-		for (j = 0; j < 5; j++)
-			cout << karu[i][j]<<" ";
-		cout << endl;
-
-	}
-
-	int pre_flop;
+	char pre_flop;
+	cout << "Fold(z) / Chick(x) / Raise(c):"<<endl;
 	cin >> pre_flop;
+	cout << endl;
 	//дії після роздачі двох карт
 	flop(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
+	cout << endl;
+
 	//дії після флопу
-	int flop;
+	char flop;
+	cout << "Fold(z) / Chick(x) / Raise(c):" << endl;
 	cin >> flop;
 	torn(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
+	cout << endl;
+
 	//дії після тьорну
-	int torn;
+	char torn;
+	cout << "Fold(z) / Chick(x) / Raise(c):" << endl;
 	cin >> torn;
 	river(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
-
+	cout<<endl;
 
 
 		return 0;
 }
 void vvidcart1(){
+	cout << "                                                                                                            __________________________\n";
+	cout << "                                                                                                             Money opponent:" << moneyo << "$\n";
+	cout << "                                                                                                            __________________________\n";
 
 	cout << "    ___________                                                                                              ___________   ___________" << endl;
 	cout << "    |%%%%%%%%%|                                                                                              |%%%%%%%%%|   |%%%%%%%%%|" << endl;
@@ -529,6 +543,7 @@ void vvidcartm(int karu[][2], int r, int s) {
 
 
 		}
+		   
 	}
 	
 
@@ -871,9 +886,14 @@ void vvidcartm(int karu[][2], int r, int s) {
 
 		}
 	}
+			cout << "                                                                                                            __________________________\n";
+			cout << "                                                                                                              Your money:" << moneyu << "$\n";
+			cout << "                                                                                                            __________________________\n";
 }
 void flop	  (int karu[][5], int r, int s) {
-
+		   cout << "                                                                                                            __________________________\n";
+	       cout << "                                                                                                             Money opponent:" << moneyo << "$\n";
+		   cout << "                                                                                                            __________________________\n";
 	if (karty[karu[0][0]] == "10") {
 		if (karu[1][0] ==0) {
 			cout << endl;
@@ -1057,7 +1077,9 @@ void flop	  (int karu[][5], int r, int s) {
 	}
 }
 void torn	  (int karu[][5], int r, int s) {
-
+			cout << "                                                                                                            __________________________\n";
+			cout << "                                                                                                             Money opponent:" << moneyo << "$\n";
+			cout << "                                                                                                            __________________________\n";
 	if (karty[karu[0][0]] == "10") {
 		if (karu[1][0] == 0) {
 			cout << endl;
@@ -1237,8 +1259,10 @@ void torn	  (int karu[][5], int r, int s) {
 	cout << "    |%%%%%%%%%|   " << endl;
 	cout << "    |%%%%%%%%%|   " << endl;
 }
-void river(int karu[][5], int r, int s) {
-
+void river	  (int karu[][5], int r, int s) {
+			cout << "                                                                                                            __________________________\n";
+			cout << "                                                                                                             Money opponent:" << moneyo << "$\n";
+			cout << "                                                                                                            __________________________\n";
 	if (karty[karu[0][0]] == "10") {
 		if (karu[1][0] == 0) {
 			cout << endl;
