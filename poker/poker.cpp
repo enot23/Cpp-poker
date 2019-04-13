@@ -14,6 +14,7 @@ void vvidcartm(int(*)[2], int, int);
 void flop(int(*)[5], int, int);
 void torn(int(*)[5], int, int);
 void river(int(*)[5], int, int);
+int scan_combination(int(*)[5],int,int, int(*)[2],int,int);
 
 int  main() {
 	int i, j, nk;
@@ -119,6 +120,7 @@ int  main() {
 	bank = 100;
 	moneyo -= bank / 2;
 	moneyu -= bank / 2;
+	int power_m = (pkaru,5,2, pkarm,2,2);
 	
 	for (;;) {
 		vvidcart1();
@@ -128,7 +130,7 @@ int  main() {
 		if (hid == 'z') {
 			cout << "vvedit na skiki pidv:";
 			cin >> raise;
-			if (raise > moneyu) {
+			if (raise < moneyu) {
 				bank += raise;
 				moneyu -= raise;
 				break;
@@ -143,13 +145,7 @@ int  main() {
 			break;
 		}
 	}
-	
-
-	
-  
-	
-	
-	
+	//дії перед флопом 
 	for(;;){
 	flop(pkaru, 2, 5);
 	vvidcartm(pkarm, 2, 2);
@@ -158,7 +154,7 @@ int  main() {
 	if (hid == 'z') {
 		cout << "vvedit na skiki pidv:";
 		cin >> raise;
-		if (raise > moneyu) {
+		if (raise < moneyu) {
 			bank += raise;
 			moneyu -= raise;
 			break;
@@ -172,61 +168,71 @@ int  main() {
 		cout << endl;
 		break;
 	}
+	scan_combination(pkaru, 2, 5, pkarm, 2, 2);
 	}
-	//дії після флопу
-	
+
+	//дії  флопу
 	
 	for(;;){
-	torn(pkaru, 2, 5);
-	vvidcartm(pkarm, 2, 2);
-	cout << "raise(z)/call(x)";
-	cin >> hid;
-	if (hid == 'z') {
-		cout << "vvedit na skiki pidv:";
-		cin >> raise;
-		if (raise > moneyu) {
-			bank += raise;
-			moneyu -= raise;
+		torn(pkaru, 2, 5);
+		vvidcartm(pkarm, 2, 2);
+		cout << "raise(z)/call(x)";
+		cin >> hid;
+		if (hid == 'z') {
+			cout << "vvedit na skiki pidv:";
+			cin >> raise;
+			if (raise < moneyu) {
+				bank += raise;
+				moneyu -= raise;
+				break;
+			}
+			else
+			{
+				continue;
+			}
+		}
+		else if (hid == 'x') {
+			cout << endl;
 			break;
 		}
-		else
-		{
-			continue;
-		}
-	}
-	else if (hid == 'x') {
-		cout << endl;
-		break;
-	}
 	}
 
-	//дії після тьорну
+	//дії  тьорну
 	
 	for (;;){
-	river(pkaru, 2, 5);
-	vvidcartm(pkarm, 2, 2);
-	cout << "raise(z)/call(x)";
-	cin >> hid;
-	if (hid == 'z') {
-		cout << "vvedit na skiki pidv:";
-		cin >> raise;
-		if (raise > moneyu) {
-			bank += raise;
-			moneyu -= raise;
+		river(pkaru, 2, 5);
+		vvidcartm(pkarm, 2, 2);
+		cout << "raise(z)/call(x)";
+		cin >> hid;
+		if (hid == 'z') {
+			cout << "vvedit na skiki pidv:";
+			cin >> raise;
+			if (raise < moneyu) {
+				bank += raise;
+				moneyu -= raise;
+				break;
+			}
+			else
+			{
+				continue;
+			}
+		}
+		else if (hid == 'x') {
+			cout << endl;
 			break;
 		}
-		else
-		{
-			continue;
-		}
 	}
-	else if (hid == 'x') {
-		cout << endl;
-		break;
+	//дії рівер
+	{
+		cout << scan_combination(pkaru, 2, 5, pkarm, 2, 2);
+		cout << "▄▄▄    ▄▄▄                             ▄▄      ▄▄  ▄▄▄▄▄▄   ▄▄▄   ▄▄     ▄▄    " << endl;
+		cout << " ██▄  ▄██                               ██      ██  ▀▀██▀▀   ███   ██     ██    " << endl;
+		cout << "  ██▄▄██    ▄████▄   ██    ██           ▀█▄ ██ ▄█▀    ██     ██▀█  ██     ██    " << endl;
+		cout << "   ▀██▀    ██▀  ▀██  ██    ██            ██ ██ ██     ██     ██ ██ ██     ██    " << endl;
+		cout << "    ██     ██    ██  ██    ██            ███▀▀███     ██     ██  █▄██     ▀▀    " << endl;
+		cout << "    ██     ▀██  ██▀  ██▄▄▄███            ███  ███   ▄▄██▄▄   ██   ███           " << endl;
+		cout << "    ▀▀       ▀▀▀▀     ▀▀▀▀ ▀▀            ▀▀▀  ▀▀▀   ▀▀▀▀▀▀   ▀▀   ▀▀▀     ▀▀    " << endl;
 	}
-	}
-
-
 
 		return 0;
 }
@@ -1791,4 +1797,168 @@ void river	  (int karu[][5], int r, int s) {
 		}
 	}
 }
+int scan_combination(int kart[][5], int s1, int r1, int karu[][2], int s2, int r2) {
+	int power,i,j, povtor_mast, max_m = 0, per_str, k, mas_flesh[5], bulca_i, bulca_j;
+	bool zn, strit_flesh = true;
+	int scan_mas[2][7];
+	{
+	for ( i = 0; i < 2; i++) {
+		for (int j = 0; j < 5; j++) {
+			scan_mas[i][j] = kart[i][j];
+		}
+	}
+	for ( i = 0; i < 2; i++) {
+		for (int j = 5; j < 7; j++) {
+			scan_mas[i][j] = karu[i][j - 5];
+		}
+	}
+	
+	}
+	//збиваня карт в один масив
+	
 
+	for (i = 0; i < 6; i++) {
+		for (j = 0; j < 6; j++) {
+			if (scan_mas[0][j] > scan_mas[0][j+1]) {
+				bulca_i = scan_mas[0][j];
+				bulca_j = scan_mas[1][j];
+				scan_mas[0][j] = scan_mas[0][j+1];
+				scan_mas[1][j] = scan_mas[1][j+1];
+				scan_mas[0][j+1] = bulca_i;
+				scan_mas[1][j+1] = bulca_j;
+			}
+		}
+	}
+
+	//сортування карт по зростанню
+	
+	int povtor1=0,max=0,visch_karta=scan_mas[0][6];
+
+	
+	for (i = 0; i < 7; i++) {
+		j = i + 1;
+		for (j; j < 7; j++) {
+			if (scan_mas[0][i] == scan_mas[0][j]) {
+				povtor1++;
+				if (scan_mas[0][i] > max) {
+					max = scan_mas[0][i];
+				}
+
+			}
+		}
+    }
+	//пошук повторення 
+
+	if (povtor1 < 4) {
+		
+		for (i = 0; i < 4; i++) {
+			povtor_mast = 0;
+			max_m = 0;
+			for (j = 6; j >=0; j--) {
+
+				if (scan_mas[1][j] == i) {
+					mas_flesh[povtor_mast] = scan_mas[0][j];
+					povtor_mast++;
+					if (max_m < scan_mas[0][j]) {
+						max_m = scan_mas[0][j];
+
+					}
+
+				}
+
+				if (povtor_mast == 5) {
+					break;
+				}
+			}
+			if (povtor_mast == 5) {
+				break;
+
+
+			}
+
+
+		}
+		
+		//перевірка на флеш
+
+		if ((mas_flesh[0]) == (mas_flesh[1]+1)&& (mas_flesh[0]) == (mas_flesh[2]+2)  && (mas_flesh[0])==(mas_flesh[3]+3) && (mas_flesh[0]) == (mas_flesh[4]+4) ) {
+			strit_flesh = false;
+		}
+		//перевірка на стріт-флеш
+		
+
+		if (povtor_mast < 5 && strit_flesh==false) {
+
+			for (k = 6; k > 3; k--) {
+				per_str = 0;
+				i = k;
+				for (; ; ) {
+					zn = false;
+
+					for (j = i - 1; j >= 0; j--) {
+
+						if (scan_mas[0][i] == (scan_mas[0][j] + 1)) {
+							per_str++;
+
+							i = j;
+							zn = true;
+							break;
+
+						}
+
+					}
+					if (zn) {
+						if (per_str == 4) {
+							break;
+						}
+						if (i <= 0) {
+							break;
+						}
+					}
+					else {
+						break;
+					}
+				}
+				if (per_str == 4) {
+					break;
+				}
+			}
+			
+		}
+		
+		//перевірка на стріт
+	}
+	//перевірка на стріт,флеш,стріт-флеш
+	if (strit_flesh==false) {
+		power=mas_flesh[0] + 60;
+	}
+	else if (povtor1 == 6) {
+			power = max + 55;
+	 }
+	else if (povtor1 == 4) {
+			power = max + 46;
+	}
+	else if (povtor_mast >= 5) {
+		 power = max_m + 37;
+	 }
+	else if (per_str == 4) {
+		power= scan_mas[0][k]+32;
+	 }
+	else if (povtor1 == 3) {
+			power = max + 27;
+	}
+	else if (povtor1 == 2) {
+			power=max + 18;
+	}
+	else if (povtor1 == 1) {
+			power = max + 9;
+	}
+	else if (povtor1 == 0) {
+		 power = visch_karta;
+	}
+	
+	
+	
+	return power;
+
+}

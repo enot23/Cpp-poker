@@ -1,5 +1,21 @@
 ﻿  poker.cpp
-c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(21): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(25): warning C4101: call: неиспользованная локальная переменная
-c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(25): warning C4101: fold: неиспользованная локальная переменная
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(22): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(228): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(229): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(229): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(229): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(230): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(230): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(230): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(231): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(231): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(232): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(232): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(232): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(233): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(233): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(233): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(234): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(26): warning C4101: call: неиспользованная локальная переменная
+c:\users\marin\desktop\документи\ather\repository poker\poker\poker.cpp(26): warning C4101: fold: неиспользованная локальная переменная
   poker.vcxproj -> C:\Users\marin\Desktop\Документи\ather\Repository poker\x64\Debug\poker.exe
