@@ -5,15 +5,13 @@
 #include <fstream>
 #include <string>
 #include <ctime>
+#include <windows.h>
 using namespace std;
 const string karty[9] = { " 6"," 7"," 8"," 9","10"," J"," Q"," K"," T" };
-int moneyo = 1000, moneyu = 1000, bank = 0, karu[2][5],karo[2][2],karm[2][2];
-	
-	
+int moneyo = 1000, moneyu = 1000, bank = 0, karu[2][5],karo[2][2],karm[2][2];	
 int(*pkaru)[5] = karu;
 	int(*pkarm)[2] = karm;
 	int(*pkaro)[2] = karo;
-
 struct mast {
 	char l1[15];
 	char l2[15];
@@ -31,9 +29,10 @@ void vvidcart1();
 void vvidscore();
 void vvidcartm();
 void flop( int);
-int scan_combination(int(*)[5],int,int, int(*)[2],int,int);
+int scan_combination(int(*)[5], int(*)[2]);
 void showdown();
 void vvivid_verhnogo_rady();
+int vibir_comp(int);
 
 
 int  main() {
@@ -139,7 +138,9 @@ int  main() {
 	bank = 100;
 	moneyo -= bank / 2;
 	moneyu -= bank / 2;
-	int power_m = (pkaru,5,2, pkarm,2,2);
+	int power_m = scan_combination(pkaru, pkarm);
+	int power_o= scan_combination(pkaru, pkaro);
+
 	
 	for (;;) {
 		vvidcart1();
@@ -149,19 +150,104 @@ int  main() {
 		if (hid == 'z') {
 			cout << "vvedit na skiki pidv:";
 			cin >> raise;
-			if (raise < moneyu) {
+			if (raise <= moneyu) {
 				bank += raise;
 				moneyu -= raise;
+				
+				vvidcart1();
+				if (vibir_comp(power_o) == 0) {
+					Sleep(2000);
+					cout << "I am pass" << endl;
+					Sleep(1000);
+					moneyu += bank;
+					bank = 0;
+					
+				}
+				else if (vibir_comp(power_o) == 1) {
+					Sleep(2000);
+					cout << "I am call" << endl;
+					Sleep(1000);
+					moneyo -= raise;
+					bank += raise;
+				}
+				else if (vibir_comp(power_o) == 2) {
+					Sleep(2000);
+					int rereys = moneyo * 0.1;
+					cout << "I am reraise:"<< rereys << endl;
+					Sleep(1000);
+					moneyo -= raise + rereys;
+					bank += raise + rereys;
+					for (;;) {
+						vvidcart1();
+						cout << "pass(c)/call(x) :";
+						cin >> hid;
+						if (hid == 'x') {
+							moneyu -= rereys;
+							bank += rereys;
+							break;
+						}
+						else if (hid == 'c') {
+							moneyo += bank;
+							bank = 0;
+							break;
+						}
+						else {
+							cout << "Error, Please repeat" << endl;
+							Sleep(2000);
+						}
+					}
+
+				}
+				vvidcart1();
 				break;
 			}
 			else
 			{
+				cout << "You do not have so much money" << endl;
+				Sleep(3000);
 				continue;
 			}
 		}
 		else if (hid == 'x') {
-			cout << endl;
+			if (vibir_comp(power_o) == 0 || vibir_comp(power_o) == 1) {
+				Sleep(2000);
+				cout << "I am call" << endl;
+				Sleep(1000);
+			}
+			else {
+				Sleep(2000);
+				raise = moneyo * 0.1;
+				cout << "I am raise :" << raise << endl;
+				Sleep(1000);
+				bank += raise;
+				moneyo -= raise;
+				for (;;) {
+					vvidcart1();
+					cout << "pass(c)/call(x) :";
+					cin >> hid;
+					if (hid == 'x') {
+						moneyu -= raise;
+						bank += raise;
+						break;
+					}
+					else if (hid == 'c') {
+						moneyo += bank;
+						bank = 0;
+						break;
+					}
+					else {
+						cout << "Error, Please repeat" << endl;
+						Sleep(2000);
+					}
+				}
+			}
+			vvidcart1;
 			break;
+		}
+		else {
+			cout << "Error, Please repeat" << endl;
+				Sleep(2000);
+				
 		}
 	}
 	//дії перед флопом 
@@ -173,7 +259,7 @@ int  main() {
 	if (hid == 'z') {
 		cout << "vvedit na skiki pidv:";
 		cin >> raise;
-		if (raise < moneyu) {
+		if (raise <= moneyu) {
 			bank += raise;
 			moneyu -= raise;
 			break;
@@ -187,7 +273,12 @@ int  main() {
 		cout << endl;
 		break;
 	}
-	scan_combination(pkaru, 2, 5, pkarm, 2, 2);
+	else {
+		cout << "Error, Please repeat" << endl;
+		Sleep(2000);
+
+	}
+	
 	}
 
 	//дії  флопу
@@ -200,7 +291,7 @@ int  main() {
 		if (hid == 'z') {
 			cout << "vvedit na skiki pidv:";
 			cin >> raise;
-			if (raise < moneyu) {
+			if (raise <= moneyu) {
 				bank += raise;
 				moneyu -= raise;
 				break;
@@ -214,7 +305,13 @@ int  main() {
 			cout << endl;
 			break;
 		}
+		else {
+			cout << "Error, Please repeat" << endl;
+			Sleep(2000);
+
+		}
 	}
+
 
 	//дії  тьорну
 	
@@ -226,7 +323,7 @@ int  main() {
 		if (hid == 'z') {
 			cout << "vvedit na skiki pidv:";
 			cin >> raise;
-			if (raise < moneyu) {
+			if (raise <= moneyu) {
 				bank += raise;
 				moneyu -= raise;
 				break;
@@ -240,10 +337,15 @@ int  main() {
 			cout << endl;
 			break;
 		}
+		else {
+			cout << "Error, Please repeat" << endl;
+			Sleep(2000);
+
+		}
 	}
 	//дії рівер
 	{
-		cout << scan_combination(pkaru, 2, 5, pkarm, 2, 2);
+		cout << scan_combination(pkaru, pkarm);
 		cout << "▄▄▄    ▄▄▄                             ▄▄      ▄▄  ▄▄▄▄▄▄   ▄▄▄   ▄▄     ▄▄    " << endl;
 		cout << " ██▄  ▄██                               ██      ██  ▀▀██▀▀   ███   ██     ██    " << endl;
 		cout << "  ██▄▄██    ▄████▄   ██    ██           ▀█▄ ██ ▄█▀    ██     ██▀█  ██     ██    " << endl;
@@ -345,7 +447,7 @@ void flop( int r) {
 	}
 	vvidcartm();
 }
-int scan_combination(int kart[][5], int s1, int r1, int karu[][2], int s2, int r2) {
+int scan_combination(int kart[][5], int karu[][2]) {
 	int power,i,j, povtor_mast, max_m = 0, per_str, k, mas_flesh[5], bulca_i, bulca_j;
 	bool zn, strit_flesh = true, strit = false, flesh = false;
 	int scan_mas[2][7];
@@ -561,4 +663,76 @@ void vvivid_verhnogo_rady() {
 	cout << "   " << m[karu[1][0]].l5 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
 	cout << "   " << m[karu[1][0]].l6 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
 	cout << "   " << m[karu[1][0]].l7 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
+}
+int vibir_comp(int power) {
+	int ret;srand(time(NULL));
+	if (power < 8) {
+		ret = rand() % 4;
+		if (ret == 0) {
+			ret = 0;
+		}
+		else {
+			ret = 1;
+		}
+	}
+	else if (power < 17) {
+		ret = rand() % 15;
+		if (ret == 0) {
+			ret = 0;
+		}
+		else if(ret<5){
+			ret = 2;
+		}
+		else {
+			ret = 1;
+		}
+
+	}
+	else if (power < 42) {
+		ret = rand() & 30;
+		if (ret == 0) {
+			ret = 0;
+		}
+		else if (ret < 20) {
+			ret = 1;
+		}
+		else {
+			ret = 2;
+		}
+	}
+	else if (power < 50) {
+		ret = rand() & 50;
+		if (ret == 0) {
+			ret = 0;
+		}
+		else if (ret < 20) {
+			ret = 1;
+		}
+		else {
+			ret = 2;
+		}
+	}
+	else if (power < 67) {
+		ret = rand() & 90;
+		if (ret == 0) {
+			ret = 0;
+		}
+		else if (ret < 20) {
+			ret = 1;
+		}
+		else {
+			ret = 2;
+		}
+	}
+	else{
+		ret = rand() & 100;
+		
+		if (ret < 20) {
+			ret = 1;
+		}
+		else {
+			ret = 2;
+		}
+	}
+	return ret;
 }
