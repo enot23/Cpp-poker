@@ -29,12 +29,11 @@ mast m[4];mast pm = m[4];
 
 void vvidcart1();
 void vvidscore();
-void vvidcartm(int(*)[2]);
-void flop(int(*)[5], int, int);
-void torn(int(*)[5], int, int);
-void river(int(*)[5], int, int);
+void vvidcartm();
+void flop( int);
 int scan_combination(int(*)[5],int,int, int(*)[2],int,int);
-void showdown(mast[4],int (*)[2],int (*)[5]);
+void showdown();
+void vvivid_verhnogo_rady();
 
 
 int  main() {
@@ -167,7 +166,7 @@ int  main() {
 	}
 	//дії перед флопом 
 	for(;;){
-	flop(pkaru, 2, 5);
+	flop(2);
 	
 	cout << "raise(z)/call(x)";
 	cin >> hid;
@@ -194,7 +193,7 @@ int  main() {
 	//дії  флопу
 	
 	for(;;){
-		torn(pkaru, 2, 5);
+		flop( 3);
 	
 		cout << "raise(z)/call(x)";
 		cin >> hid;
@@ -220,7 +219,7 @@ int  main() {
 	//дії  тьорну
 	
 	for (;;){
-		river(pkaru, 2, 5);
+		flop( 4);
 		
 		cout << "raise(z)/call(x)";
 		cin >> hid;
@@ -254,7 +253,7 @@ int  main() {
 		cout << "    ▀▀       ▀▀▀▀     ▀▀▀▀ ▀▀            ▀▀▀  ▀▀▀   ▀▀▀▀▀▀   ▀▀   ▀▀▀     ▀▀    " << endl;
 	}
 
-	showdown(m, pkaro, pkaru);
+	showdown();
 
 
  		return 0;
@@ -293,36 +292,58 @@ void vvidcart1(){
 			cout << "    |%%%%%%%%%|   " << endl;
 		}
 	}
-	vvidcartm(pkarm);
+	vvidcartm();
 }
-void vvidcartm(int karu[][2]) {
+void vvidcartm() {
     cout << endl;
-	cout << "                                                                                                            " << m[karu[1][0]].l1 << m[karu[1][1]].l1 << endl;
-	cout << "                                                                                                            " << m[karu[1][0]].l2 << m[karu[1][1]].l2 << endl;
-	cout << "                                                                                                            " << m[karu[1][0]].l3 << m[karu[1][1]].l3 << endl;
-	cout << "                                                                                                            " << m[karu[1][0]].l41 << karty[karu[0][0]] << m[karu[1][0]].l42 << m[karu[1][1]].l41 << karty[karu[0][1]] << m[karu[1][1]].l42 << endl;
-	cout << "                                                                                                            " << m[karu[1][0]].l5 << m[karu[1][1]].l5 << endl;
-	cout << "                                                                                                            " << m[karu[1][0]].l6 << m[karu[1][1]].l6 << endl;
-	cout << "                                                                                                            " << m[karu[1][0]].l7 << m[karu[1][1]].l7 << endl;
+	cout << "                                                                                                            " << m[karm[1][0]].l1 << m[karm[1][1]].l1 << endl;
+	cout << "                                                                                                            " << m[karm[1][0]].l2 << m[karm[1][1]].l2 << endl;
+	cout << "                                                                                                            " << m[karm[1][0]].l3 << m[karm[1][1]].l3 << endl;
+	cout << "                                                                                                            " << m[karm[1][0]].l41 << karty[karm[0][0]] << m[karm[1][0]].l42 << m[karm[1][1]].l41 << karty[karm[0][1]] << m[karm[1][1]].l42 << endl;
+	cout << "                                                                                                            " << m[karm[1][0]].l5 << m[karm[1][1]].l5 << endl;
+	cout << "                                                                                                            " << m[karm[1][0]].l6 << m[karm[1][1]].l6 << endl;
+	cout << "                                                                                                            " << m[karm[1][0]].l7 << m[karm[1][1]].l7 << endl;
 
 	cout << "                                                                                                            __________________________\n";
 	cout << "                                                                                                              Your money:" << moneyu << "$\n";
 	cout << "                                                                                                            __________________________\n";
 }
-void flop	  (int karu[][5], int r, int s) {
+void flop( int r) {
 	vvidscore();
-
-	vvidcartm(pkarm);
-}
-void torn	  (int karu[][5], int r, int s) {
-	vvidscore();
-	
-	vvidcartm(pkarm);
-}
-void river	  (int karu[][5], int r, int s) {
-	vvidscore();
-	
-	vvidcartm(pkarm);
+	vvivid_verhnogo_rady();
+	for (int i = 1; i <= r; i++) {
+		if (i == 2) {
+			cout << endl;
+			cout << "   " << m[karu[1][i]].l1 << "                                          ++++++    " << endl;
+			cout << "   " << m[karu[1][i]].l2 << "                                        ++      ++  " << endl;
+			cout << "   " << m[karu[1][i]].l3 << "                                      ++          ++" << endl;
+			cout << "   " << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << "                                      +   " << bank << endl;
+			cout << "   " << m[karu[1][i]].l5 << "                                      ++          ++ " << endl;
+			cout << "   " << m[karu[1][i]].l6 << "                                        ++      ++   " << endl;
+			cout << "   " << m[karu[1][i]].l7 << "                                          ++++++     " << endl;
+		}
+		else {
+			cout << endl;
+			cout << "   " << m[karu[1][i]].l1 << endl;
+			cout << "   " << m[karu[1][i]].l2 << endl;
+			cout << "   " << m[karu[1][i]].l3 << endl;
+			cout << "   " << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << endl;
+			cout << "   " << m[karu[1][i]].l5 << endl;
+			cout << "   " << m[karu[1][i]].l6 << endl;
+			cout << "   " << m[karu[1][i]].l7 << endl;
+		}
+	}
+	for (int i = ++r; i < 5; i++) {
+		cout << endl;
+		cout << "    ___________   " << endl;
+		cout << "    |%%%%%%%%%|   " << endl;
+		cout << "    |%%%%%%%%%|   " << endl;
+		cout << "    |%%%%%%%%%|   " << endl;
+		cout << "    |%%%%%%%%%|   " << endl;
+		cout << "    |%%%%%%%%%|   " << endl;
+		cout << "    |%%%%%%%%%|   " << endl;
+	}
+	vvidcartm();
 }
 int scan_combination(int kart[][5], int s1, int r1, int karu[][2], int s2, int r2) {
 	int power,i,j, povtor_mast, max_m = 0, per_str, k, mas_flesh[5], bulca_i, bulca_j;
@@ -490,44 +511,54 @@ int scan_combination(int kart[][5], int s1, int r1, int karu[][2], int s2, int r
 	return power;
 
 }
-void showdown(mast m[4], int kart_komp[][2], int kart_stoli[][5]) {
+void showdown() {
 	vvidscore();
 	cout << endl;  
-	cout << "   " << m[kart_stoli[1][0]].l1 << "                                                                                              " << m[kart_komp[1][0]].l1 << m[kart_komp[1][1]].l1 << endl;
-	cout << "   " << m[kart_stoli[1][0]].l2 << "                                                                                              " << m[kart_komp[1][0]].l2 << m[kart_komp[1][1]].l2 << endl;
-	cout << "   " << m[kart_stoli[1][0]].l3 << "                                                                                              " << m[kart_komp[1][0]].l3 << m[kart_komp[1][1]].l3 << endl;
-	cout << "   " << m[kart_stoli[1][0]].l41<< karty[kart_stoli[0][0]] << m[kart_stoli[1][0]].l42<<"                                                                                              " << m[kart_komp[1][0]].l41 <<karty[kart_komp[0][0]]<< m[kart_komp[1][0]].l42 << m[kart_komp[1][1]].l41<< karty[kart_komp[0][1]] << m[kart_komp[1][1]].l42<<endl;
-	cout << "   " << m[kart_stoli[1][0]].l5 << "                                                                                              " << m[kart_komp[1][0]].l5 << m[kart_komp[1][1]].l5 << endl;
-	cout << "   " << m[kart_stoli[1][0]].l6 << "                                                                                              " << m[kart_komp[1][0]].l6 << m[kart_komp[1][1]].l6 << endl;
-	cout << "   " << m[kart_stoli[1][0]].l7 << "                                                                                              " << m[kart_komp[1][0]].l7 << m[kart_komp[1][1]].l7 << endl;
+	cout << "   " << m[karu[1][0]].l1 << "                                                                                              " << m[karu[1][0]].l1 << m[karu[1][1]].l1 << endl;
+	cout << "   " << m[karu[1][0]].l2 << "                                                                                              " << m[karu[1][0]].l2 << m[karu[1][1]].l2 << endl;
+	cout << "   " << m[karu[1][0]].l3 << "                                                                                              " << m[karu[1][0]].l3 << m[karu[1][1]].l3 << endl;
+	cout << "   " << m[karu[1][0]].l41<< karty[karu[0][0]] << m[karu[1][0]].l42<<"                                                                                              " << m[karu[1][0]].l41 <<karty[karo[0][0]]<< m[karu[1][0]].l42 << m[karu[1][1]].l41<< karty[karo[0][1]] << m[karu[1][1]].l42<<endl;
+	cout << "   " << m[karu[1][0]].l5 << "                                                                                              " << m[karu[1][0]].l5 << m[karu[1][1]].l5 << endl;
+	cout << "   " << m[karu[1][0]].l6 << "                                                                                              " << m[karu[1][0]].l6 << m[karu[1][1]].l6 << endl;
+	cout << "   " << m[karu[1][0]].l7 << "                                                                                              " << m[karu[1][0]].l7 << m[karu[1][1]].l7 << endl;
 
 	for (int i = 1; i < 5; i++) {
 		if (i == 2) {
 			cout << endl;
-			cout << "   " << m[kart_stoli[1][i]].l1 << "                                          ++++++    " << endl;
-			cout << "   " << m[kart_stoli[1][i]].l2 << "                                        ++      ++  " << endl;
-			cout << "   " << m[kart_stoli[1][i]].l3 << "                                      ++          ++"<<endl;
-			cout << "   " << m[kart_stoli[1][i]].l41 << karty[kart_stoli[0][i]] << m[kart_stoli[1][i]].l42 << "                                      +   "<<bank<< endl;
-			cout << "   " << m[kart_stoli[1][i]].l5 << "                                      ++          ++ " << endl;
-			cout << "   " << m[kart_stoli[1][i]].l6 << "                                        ++      ++   " << endl;
-			cout << "   " << m[kart_stoli[1][i]].l7 << "                                          ++++++     "<< endl;
+			cout << "   " << m[karu[1][i]].l1 << "                                          ++++++    " << endl;
+			cout << "   " << m[karu[1][i]].l2 << "                                        ++      ++  " << endl;
+			cout << "   " << m[karu[1][i]].l3 << "                                      ++          ++"<<endl;
+			cout << "   " << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << "                                      +   "<<bank<< endl;
+			cout << "   " << m[karu[1][i]].l5 << "                                      ++          ++ " << endl;
+			cout << "   " << m[karu[1][i]].l6 << "                                        ++      ++   " << endl;
+			cout << "   " << m[karu[1][i]].l7 << "                                          ++++++     "<< endl;
 		}
 		else {
 			cout << endl;
-			cout << "   " << m[kart_stoli[1][i]].l1 << endl;
-			cout << "   " << m[kart_stoli[1][i]].l2 << endl;
-			cout << "   " << m[kart_stoli[1][i]].l3 << endl;
-			cout << "   " << m[kart_stoli[1][i]].l41 << karty[kart_stoli[0][i]] << m[kart_stoli[1][i]].l42 << endl;
-			cout << "   " << m[kart_stoli[1][i]].l5 << endl;
-			cout << "   " << m[kart_stoli[1][i]].l6 << endl;
-			cout << "   " << m[kart_stoli[1][i]].l7 << endl;
+			cout << "   " << m[karu[1][i]].l1 << endl;
+			cout << "   " << m[karu[1][i]].l2 << endl;
+			cout << "   " << m[karu[1][i]].l3 << endl;
+			cout << "   " << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << endl;
+			cout << "   " << m[karu[1][i]].l5 << endl;
+			cout << "   " << m[karu[1][i]].l6 << endl;
+			cout << "   " << m[karu[1][i]].l7 << endl;
 		}
 	}
 
-	vvidcartm(pkarm);
+	vvidcartm();
 }
 void vvidscore() {
 	cout << "                                                                                                            __________________________\n";
 	cout << "                                                                                                             Money opponent:" << moneyo << "$\n";
 	cout << "                                                                                                            __________________________\n";
+}
+void vvivid_verhnogo_rady() {
+	cout << endl;
+	cout << "   " << m[karu[1][0]].l1 << "                                                                                              ___________   ___________"<<endl;
+	cout << "   " << m[karu[1][0]].l2 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
+	cout << "   " << m[karu[1][0]].l3 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
+	cout << "   " << m[karu[1][0]].l41 << karty[karu[0][0]] << m[karu[1][0]].l42 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
+	cout << "   " << m[karu[1][0]].l5 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
+	cout << "   " << m[karu[1][0]].l6 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
+	cout << "   " << m[karu[1][0]].l7 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
 }
