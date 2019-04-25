@@ -155,7 +155,13 @@ int  main() {
 				moneyu -= raise;
 				
 				vvidcart1();
-				if (vibir_comp(power_o) == 0) {
+				int rer; 
+				
+			    rer = rand() % 4;
+			    rer=(rer == 0)? 0 : 1;
+					
+				
+			    if (vibir_comp(power_o) == 0) {
 					Sleep(2000);
 					cout << "I am pass" << endl;
 					Sleep(1000);
@@ -163,20 +169,43 @@ int  main() {
 					bank = 0;
 					
 				}
-				else if (vibir_comp(power_o) == 1) {
+				//логіка  на фолд
+				else if (vibir_comp(power_o) == 1 || rer==1|| moneyo<raise) {
 					Sleep(2000);
 					cout << "I am call" << endl;
 					Sleep(1000);
-					moneyo -= raise;
-					bank += raise;
+					if (moneyo > raise) {
+						moneyo -= raise;
+						bank += raise;
+					}
+					else {
+						bank += moneyo;
+						moneyo = 0;
+						
+					}
+					//перевірка  чи хватає грошей для колу
 				}
-				else if (vibir_comp(power_o) == 2) {
+				//логіка на кол
+			    else if (rer==0) {
 					Sleep(2000);
-					int rereys = moneyo * 0.1;
-					cout << "I am reraise:"<< rereys << endl;
+					int rereys = (moneyo-raise) > 50 ? ((moneyo-raise) * 0.1) : moneyo-raise;
+					cout << "I am reraise:"<< rereys+raise << endl;
 					Sleep(1000);
-					moneyo -= raise + rereys;
-					bank += raise + rereys;
+					
+					if (moneyo > raise+rereys) {
+						moneyo -= raise+rereys;
+						bank += raise+rereys;
+					}
+					else if (moneyo > raise && moneyo< raise + rereys) {
+						moneyo -= raise;
+						bank += raise;
+					}
+					else {
+						bank += moneyo;
+						moneyo = 0;
+
+					}
+					//перевірка чи є в комп*ютера достатньо грошей
 					for (;;) {
 						vvidcart1();
 						cout << "pass(c)/call(x) :";
@@ -185,6 +214,7 @@ int  main() {
 							moneyu -= rereys;
 							bank += rereys;
 							break;
+
 						}
 						else if (hid == 'c') {
 							moneyo += bank;
@@ -198,7 +228,9 @@ int  main() {
 					}
 
 				}
+				//логіка на ререйс
 				vvidcart1();
+				Sleep(2000);
 				break;
 			}
 			else
@@ -208,26 +240,37 @@ int  main() {
 				continue;
 			}
 		}
+		//логіка на рейс
 		else if (hid == 'x') {
-			if (vibir_comp(power_o) == 0 || vibir_comp(power_o) == 1) {
+
+			if (vibir_comp(power_o) == 0 || vibir_comp(power_o) == 1||moneyo==0) {
 				Sleep(2000);
-				cout << "I am call" << endl;
+				cout << "I am сheck" << endl;
 				Sleep(1000);
 			}
+			//логіка  чеку
 			else {
 				Sleep(2000);
-				raise = moneyo * 0.1;
+
+				raise = moneyo > 50 ? (moneyo * 0.1):moneyo;
 				cout << "I am raise :" << raise << endl;
 				Sleep(1000);
 				bank += raise;
 				moneyo -= raise;
+				
 				for (;;) {
 					vvidcart1();
 					cout << "pass(c)/call(x) :";
 					cin >> hid;
 					if (hid == 'x') {
-						moneyu -= raise;
-						bank += raise;
+						if (moneyu > raise) {
+							moneyu -= raise;
+							bank += raise;
+						}
+						else {
+							bank += moneyu;
+							moneyu = 0;
+						}
 						break;
 					}
 					else if (hid == 'c') {
@@ -240,10 +283,13 @@ int  main() {
 						Sleep(2000);
 					}
 				}
+				//вибір юзера
 			}
 			vvidcart1;
+			Sleep(1000);
 			break;
 		}
+		//логіка на кол
 		else {
 			cout << "Error, Please repeat" << endl;
 				Sleep(2000);
@@ -616,13 +662,13 @@ int scan_combination(int kart[][5], int karu[][2]) {
 void showdown() {
 	vvidscore();
 	cout << endl;  
-	cout << "   " << m[karu[1][0]].l1 << "                                                                                              " << m[karu[1][0]].l1 << m[karu[1][1]].l1 << endl;
-	cout << "   " << m[karu[1][0]].l2 << "                                                                                              " << m[karu[1][0]].l2 << m[karu[1][1]].l2 << endl;
-	cout << "   " << m[karu[1][0]].l3 << "                                                                                              " << m[karu[1][0]].l3 << m[karu[1][1]].l3 << endl;
-	cout << "   " << m[karu[1][0]].l41<< karty[karu[0][0]] << m[karu[1][0]].l42<<"                                                                                              " << m[karu[1][0]].l41 <<karty[karo[0][0]]<< m[karu[1][0]].l42 << m[karu[1][1]].l41<< karty[karo[0][1]] << m[karu[1][1]].l42<<endl;
-	cout << "   " << m[karu[1][0]].l5 << "                                                                                              " << m[karu[1][0]].l5 << m[karu[1][1]].l5 << endl;
-	cout << "   " << m[karu[1][0]].l6 << "                                                                                              " << m[karu[1][0]].l6 << m[karu[1][1]].l6 << endl;
-	cout << "   " << m[karu[1][0]].l7 << "                                                                                              " << m[karu[1][0]].l7 << m[karu[1][1]].l7 << endl;
+	cout << "   " << m[karu[1][0]].l1 << "                                                                                              " << m[karo[1][0]].l1 << m[karo[1][1]].l1 << endl;
+	cout << "   " << m[karu[1][0]].l2 << "                                                                                              " << m[karo[1][0]].l2 << m[karo[1][1]].l2 << endl;
+	cout << "   " << m[karu[1][0]].l3 << "                                                                                              " << m[karo[1][0]].l3 << m[karo[1][1]].l3 << endl;
+	cout << "   " << m[karu[1][0]].l41<< karty[karu[0][0]] << m[karu[1][0]].l42<<"                                                                                              " << m[karo[1][0]].l41 <<karty[karo[0][0]]<< m[karo[1][0]].l42 << m[karo[1][1]].l41<< karty[karo[0][1]] << m[karo[1][1]].l42<<endl;
+	cout << "   " << m[karu[1][0]].l5 << "                                                                                              " << m[karo[1][0]].l5 << m[karo[1][1]].l5 << endl;
+	cout << "   " << m[karu[1][0]].l6 << "                                                                                              " << m[karo[1][0]].l6 << m[karo[1][1]].l6 << endl;
+	cout << "   " << m[karu[1][0]].l7 << "                                                                                              " << m[karo[1][0]].l7 << m[karo[1][1]].l7 << endl;
 
 	for (int i = 1; i < 5; i++) {
 		if (i == 2) {
