@@ -33,11 +33,24 @@ int scan_combination(int(*)[5], int(*)[2]);
 void showdown();
 void vvivid_verhnogo_rady();
 int vibir_comp(int);
+int logic(int);
+int logic2(int);
+void you_win();
+void you_lose();
+void welcome();
+void all_in();
+void who_is_winer(int,int);
 
 
 int  main() {
-	int i, j, nk, raise;
-	;char hid;
+	
+	//HANDLE hWnd = GetStdHandle(STD_OUTPUT_HANDLE);
+	//COORD bufferSize = { 0, 0 };
+	//SetConsoleScreenBufferSize(hWnd, bufferSize);
+	//system("mode con cols=1300 lines=900");
+	welcome();
+	Sleep(4000);
+	int i, j, nk;
 	ifstream f1("zzz.txt", std::ios::binary);
 	for (int i = 0; i < 4; i++) {
 		f1.read((char*)& m[i], sizeof(mast));
@@ -47,363 +60,174 @@ int  main() {
 	//зчитування можливих мастей
 	srand(time(NULL));
 	bool vsee,fold,call;
-	for (nk = 0; nk < 2; nk++) {
-		vsee = false;
-		karo[0][nk] = rand() % 9;
-		karo[1][nk] = rand() % 4;
 
-		for (i = 0; i < 1; i++) {
-			for (j = 0; j < nk; j++) {
-				if ((karo[i][j] == karo[i][nk]) && (karo[i + 1][j] == karo[i + 1][nk]))
-					vsee = true;
+	
+	for (int pravo_hodu = 0 ; moneyo > 0 && moneyu > 0;pravo_hodu++) {
+		for (nk = 0; nk < 2; nk++) {
+			vsee = false;
+			karo[0][nk] = rand() % 9;
+			karo[1][nk] = rand() % 4;
+
+			for (i = 0; i < 1; i++) {
+				for (j = 0; j < nk; j++) {
+					if ((karo[i][j] == karo[i][nk]) && (karo[i + 1][j] == karo[i + 1][nk]))
+						vsee = true;
+				}
+			}
+			if (vsee) {
+				nk--;
+				continue;
 			}
 		}
-		if (vsee) {
-			nk--;
-			continue;
-		}
-	}
-	//Роздача карт супротивника, перевірка на повторення в своєму масиві
-	for (nk = 0; nk < 2; nk++) {
-		vsee = false;
-		karm[0][nk] = rand() % 9;
-		karm[1][nk] = rand() % 4;
 
-		
-				if ((karm[0][0] == karm[0][1]) && (karm[1][0] == karm[1][1]))
-					vsee = true;
-			
-		
-		if (vsee) {
-			nk--;
-			continue;
-		}
+		//Роздача карт супротивника, перевірка на повторення в своєму масиві
+		for (nk = 0; nk < 2; nk++) {
+			vsee = false;
+			karm[0][nk] = rand() % 9;
+			karm[1][nk] = rand() % 4;
 
-		
+
+			if ((karm[0][0] == karm[0][1]) && (karm[1][0] == karm[1][1]))
+				vsee = true;
+
+
+			if (vsee) {
+				nk--;
+				continue;
+			}
+
+
 			for (j = 0; j < 2; j++) {
-				if ((karo[0][j] == karm[0][nk]) && (karo[ 1][j] == karm[1][nk]))
+				if ((karo[0][j] == karm[0][nk]) && (karo[1][j] == karm[1][nk]))
 					vsee = true;
 			}
-		
-		if (vsee) {
-			nk--;
-			continue;
-		}
 
-	}
-	//Роздача карт юзера, перевірка на повторення між собою і картами супотивника
-	for (nk = 0; nk < 5; nk++) {
-		vsee = false;
-		karu[0][nk] = rand() % 9;
-		karu[1][nk] = rand() % 4;
-
-		for (i = 0; i < 1; i++) {
-			for (j = 0; j < nk; j++) {
-				if ((karu[i][j] == karu[i][nk]) && (karu[i + 1][j] == karu[i + 1][nk]))
-					vsee = true;
+			if (vsee) {
+				nk--;
+				continue;
 			}
-		}
-				 if (vsee) {
-				   nk--;
-				   continue;
-				 }
 
-			for (j = 0; j < nk+1; j++) {
+		}
+		//Роздача карт юзера, перевірка на повторення між собою і картами супотивника
+		for (nk = 0; nk < 5; nk++) {
+			vsee = false;
+			karu[0][nk] = rand() % 9;
+			karu[1][nk] = rand() % 4;
+
+			for (i = 0; i < 1; i++) {
+				for (j = 0; j < nk; j++) {
+					if ((karu[i][j] == karu[i][nk]) && (karu[i + 1][j] == karu[i + 1][nk]))
+						vsee = true;
+				}
+			}
+			if (vsee) {
+				nk--;
+				continue;
+			}
+
+			for (j = 0; j < nk + 1; j++) {
 				if ((karo[0][j] == karu[0][nk]) && (karo[1][j] == karu[1][nk]))
 					vsee = true;
 			}
-		
-		        if (vsee) {
-		        	nk--;
-		        	continue;
-		        }
 
-				for (j = 0; j < nk+1; j++) {
-					if ((karm[0][j] == karu[0][nk]) && (karm[1][j] == karu[1][nk]))
-						vsee = true;
-				}
-
-				if (vsee) {
-					nk--;
-					continue;
-				}
-		        
-
-
-	}
-	//Роздача карт на столі, первірка на повторення між собою, картами супротивника і картами юзера
-
-	
-
-	bank = 100;
-	moneyo -= bank / 2;
-	moneyu -= bank / 2;
-	int power_m = scan_combination(pkaru, pkarm);
-	int power_o= scan_combination(pkaru, pkaro);
-
-	
-	for (;;) {
-		vvidcart1();
-		
-		cout << "raise(z)/call(x)";
-		cin >> hid;
-		if (hid == 'z') {
-			cout << "vvedit na skiki pidv:";
-			cin >> raise;
-			if (raise <= moneyu) {
-				bank += raise;
-				moneyu -= raise;
-				
-				vvidcart1();
-				int rer; 
-				
-			    rer = rand() % 4;
-			    rer=(rer == 0)? 0 : 1;
-					
-				
-			    if (vibir_comp(power_o) == 0) {
-					Sleep(2000);
-					cout << "I am pass" << endl;
-					Sleep(1000);
-					moneyu += bank;
-					bank = 0;
-					
-				}
-				//логіка  на фолд
-				else if (vibir_comp(power_o) == 1 || rer==1|| moneyo<raise) {
-					Sleep(2000);
-					cout << "I am call" << endl;
-					Sleep(1000);
-					if (moneyo > raise) {
-						moneyo -= raise;
-						bank += raise;
-					}
-					else {
-						bank += moneyo;
-						moneyo = 0;
-						
-					}
-					//перевірка  чи хватає грошей для колу
-				}
-				//логіка на кол
-			    else if (rer==0) {
-					Sleep(2000);
-					int rereys = (moneyo-raise) > 50 ? ((moneyo-raise) * 0.1) : moneyo-raise;
-					cout << "I am reraise:"<< rereys+raise << endl;
-					Sleep(1000);
-					
-					if (moneyo > raise+rereys) {
-						moneyo -= raise+rereys;
-						bank += raise+rereys;
-					}
-					else if (moneyo > raise && moneyo< raise + rereys) {
-						moneyo -= raise;
-						bank += raise;
-					}
-					else {
-						bank += moneyo;
-						moneyo = 0;
-
-					}
-					//перевірка чи є в комп*ютера достатньо грошей
-					for (;;) {
-						vvidcart1();
-						cout << "pass(c)/call(x) :";
-						cin >> hid;
-						if (hid == 'x') {
-							moneyu -= rereys;
-							bank += rereys;
-							break;
-
-						}
-						else if (hid == 'c') {
-							moneyo += bank;
-							bank = 0;
-							break;
-						}
-						else {
-							cout << "Error, Please repeat" << endl;
-							Sleep(2000);
-						}
-					}
-
-				}
-				//логіка на ререйс
-				vvidcart1();
-				Sleep(2000);
-				break;
-			}
-			else
-			{
-				cout << "You do not have so much money" << endl;
-				Sleep(3000);
+			if (vsee) {
+				nk--;
 				continue;
 			}
-		}
-		//логіка на рейс
-		else if (hid == 'x') {
 
-			if (vibir_comp(power_o) == 0 || vibir_comp(power_o) == 1||moneyo==0) {
-				Sleep(2000);
-				cout << "I am сheck" << endl;
-				Sleep(1000);
+			for (j = 0; j < nk + 1; j++) {
+				if ((karm[0][j] == karu[0][nk]) && (karm[1][j] == karu[1][nk]))
+					vsee = true;
 			}
-			//логіка  чеку
-			else {
-				Sleep(2000);
 
-				raise = moneyo > 50 ? (moneyo * 0.1):moneyo;
-				cout << "I am raise :" << raise << endl;
-				Sleep(1000);
-				bank += raise;
-				moneyo -= raise;
-				
-				for (;;) {
-					vvidcart1();
-					cout << "pass(c)/call(x) :";
-					cin >> hid;
-					if (hid == 'x') {
-						if (moneyu > raise) {
-							moneyu -= raise;
-							bank += raise;
-						}
-						else {
-							bank += moneyu;
-							moneyu = 0;
-						}
-						break;
-					}
-					else if (hid == 'c') {
-						moneyo += bank;
-						bank = 0;
-						break;
-					}
-					else {
-						cout << "Error, Please repeat" << endl;
-						Sleep(2000);
-					}
-				}
-				//вибір юзера
-			}
-			vvidcart1;
-			Sleep(1000);
-			break;
-		}
-		//логіка на кол
-		else {
-			cout << "Error, Please repeat" << endl;
-				Sleep(2000);
-				
-		}
-	}
-	//дії перед флопом 
-	for(;;){
-	flop(2);
-	
-	cout << "raise(z)/call(x)";
-	cin >> hid;
-	if (hid == 'z') {
-		cout << "vvedit na skiki pidv:";
-		cin >> raise;
-		if (raise <= moneyu) {
-			bank += raise;
-			moneyu -= raise;
-			break;
-		}
-		else
-		{
-			continue;
-		}
-	}
-	else if (hid == 'x') {
-		cout << endl;
-		break;
-	}
-	else {
-		cout << "Error, Please repeat" << endl;
-		Sleep(2000);
-
-	}
-	
-	}
-
-	//дії  флопу
-	
-	for(;;){
-		flop( 3);
-	
-		cout << "raise(z)/call(x)";
-		cin >> hid;
-		if (hid == 'z') {
-			cout << "vvedit na skiki pidv:";
-			cin >> raise;
-			if (raise <= moneyu) {
-				bank += raise;
-				moneyu -= raise;
-				break;
-			}
-			else
-			{
+			if (vsee) {
+				nk--;
 				continue;
 			}
+
+
+
 		}
-		else if (hid == 'x') {
-			cout << endl;
-			break;
+		//Роздача карт на столі, первірка на повторення між собою, картами супротивника і картами юзера
+
+
+		if (moneyo > 50) {
+			bank = 50;
+			moneyo -=50;
 		}
 		else {
-			cout << "Error, Please repeat" << endl;
-			Sleep(2000);
-
+			bank = moneyo;
+			moneyo = 0;
 		}
-	}
+		if (moneyu > 50) {
+			bank += 50;
+			moneyu -= 50; 
+		}
+		else {
+			bank += moneyu;
+			moneyu = 0;
+		}
 
-
-	//дії  тьорну
-	
-	for (;;){
-		flop( 4);
-		
-		cout << "raise(z)/call(x)";
-		cin >> hid;
-		if (hid == 'z') {
-			cout << "vvedit na skiki pidv:";
-			cin >> raise;
-			if (raise <= moneyu) {
-				bank += raise;
-				moneyu -= raise;
+		int power_m = scan_combination(pkaru, pkarm);
+		int power_o = scan_combination(pkaru, pkaro),l;
+		for (;;) {
+			l = (pravo_hodu % 2 == 1) ? logic2(0) : logic(0);
+			if (l == 1) {
+				moneyo += bank;
+				bank = 0;
 				break;
 			}
-			else
-			{
-				continue;
+			else if (l == 2) {
+				moneyu += bank;
+				bank = 0;	break;
 			}
-		}
-		else if (hid == 'x') {
-			cout << endl;
+
+			//дії перед флопом 
+			l = (pravo_hodu % 2 == 1) ? logic2(1) : logic(1);
+			if (l == 1) {
+				moneyo += bank;
+				bank = 0;
+				break;
+			}
+			else if (l == 2) {
+				moneyu += bank;
+				bank = 0;	break;
+			}
+
+			//дії  флопу
+
+			l = (pravo_hodu % 2 == 1) ? logic2(2) : logic(2);
+
+			if (l == 1) {
+				moneyo += bank;
+				bank = 0;
+				break;
+			}
+			else if (l == 2) {
+				moneyu += bank;
+				bank = 0;	break;
+			}
+			//дії  тьорну
+
+			l = (pravo_hodu % 2 == 1) ? logic2(3) : logic(3);
+			if (l == 1) {
+				moneyo += bank;
+				bank = 0;
+				break;
+			}
+			else if (l == 2) {
+				moneyu += bank;
+				bank = 0;	break;
+			}
+			//дії рівер
 			break;
 		}
-		else {
-			cout << "Error, Please repeat" << endl;
-			Sleep(2000);
-
+		showdown();
+		Sleep(3000);
+		if (l == 0) {
+			who_is_winer(power_m, power_o);
 		}
 	}
-	//дії рівер
-	{
-		cout << scan_combination(pkaru, pkarm);
-		cout << "▄▄▄    ▄▄▄                             ▄▄      ▄▄  ▄▄▄▄▄▄   ▄▄▄   ▄▄     ▄▄    " << endl;
-		cout << " ██▄  ▄██                               ██      ██  ▀▀██▀▀   ███   ██     ██    " << endl;
-		cout << "  ██▄▄██    ▄████▄   ██    ██           ▀█▄ ██ ▄█▀    ██     ██▀█  ██     ██    " << endl;
-		cout << "   ▀██▀    ██▀  ▀██  ██    ██            ██ ██ ██     ██     ██ ██ ██     ██    " << endl;
-		cout << "    ██     ██    ██  ██    ██            ███▀▀███     ██     ██  █▄██     ▀▀    " << endl;
-		cout << "    ██     ▀██  ██▀  ██▄▄▄███            ███  ███   ▄▄██▄▄   ██   ███           " << endl;
-		cout << "    ▀▀       ▀▀▀▀     ▀▀▀▀ ▀▀            ▀▀▀  ▀▀▀   ▀▀▀▀▀▀   ▀▀   ▀▀▀     ▀▀    " << endl;
-	}
-
-	showdown();
-
-
  		return 0;
 }
 void vvidcart1(){
@@ -781,4 +605,426 @@ int vibir_comp(int power) {
 		}
 	}
 	return ret;
+}
+int  logic(int z) {
+	int power_o = scan_combination(pkaru, pkaro), raise;
+	char hid;
+	bool pas=false;
+	int ret=0;
+	for (;;) {
+
+
+		z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+
+		//перевірка частини гри
+		cout << "raise(z)/chek(x)";
+		cin >> hid;
+		if (hid == 'z') {
+			cout << "vvedit na skiki pidv:";
+			cin >> raise;
+
+			if (raise <= moneyu) {
+				bank += raise;
+				moneyu -= raise;
+				
+				if (moneyu == 0) { all_in(); Sleep(1500);
+				}
+				z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+				int rer;
+
+				rer = rand() % 4;
+				rer = (rer == 0) ? 0 : 1;
+
+
+				if (vibir_comp(power_o) == 0) {
+					Sleep(2000);
+					cout << "I am pass" << endl;
+					Sleep(1000);
+					moneyu += bank;
+					bank = 0;
+					pas = true;
+					ret = 2;
+					break;
+
+				}
+				//логіка  на фолд
+				else if (vibir_comp(power_o) == 1 || rer == 1 || moneyo < raise) {
+					Sleep(2000);
+					cout << "I am call" << endl;
+					Sleep(1000);
+					if (moneyo > raise) {
+						moneyo -= raise;
+						bank += raise;
+					}
+					else {
+						bank += moneyo;
+						moneyo = 0;
+
+					}
+					if (moneyo == 0) { all_in(); Sleep(1500); }
+					//перевірка  чи хватає грошей для колу
+					break;
+				}
+				//логіка на кол
+				else if (rer == 0) {
+					Sleep(2000);
+					int rereys = (moneyo - raise) > 50 ? ((moneyo - raise) * 0.1) : moneyo - raise;
+					cout << "I am reraise:" << rereys + raise << endl;
+					Sleep(1000);
+
+					if (moneyo > raise + rereys) {
+						moneyo -= raise + rereys;
+						bank += raise + rereys;
+					}
+					else if (moneyo > raise && moneyo < raise + rereys) {
+						moneyo -= raise;
+						bank += raise;
+					}
+					else {
+						bank += moneyo;
+						moneyo = 0;
+
+					}
+					if (moneyo == 0) {
+						all_in(); Sleep(1500);
+						//перевірка чи є в комп*ютера достатньо грошей
+						for (;;) {
+							z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+							cout << "pass(c)/call(x) :";
+							cin >> hid;
+							if (hid == 'x') {
+								moneyu -= rereys;
+								bank += rereys;
+								break;
+								if (moneyu == 0) {
+									all_in(); Sleep(1500);
+								}
+
+							}
+							else if (hid == 'c') {
+								moneyo += bank;
+								bank = 0;
+								pas = true;
+								ret = 1;
+								
+								break;
+								
+							}
+							else {
+								cout << "Error, Please repeat" << endl;
+								Sleep(2000);
+							}
+							
+						}
+						if (pas == true) {
+								break;
+						}
+
+					}
+					//логіка на ререйс
+					z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+					Sleep(2000);
+					break;
+				}
+				else
+				{
+					cout << "You do not have so much money" << endl;
+					Sleep(3000);
+					continue;
+				}
+			}if (pas == true) {
+			break;
+		    }
+		}
+		
+			//логіка на рейс
+		else if (hid == 'x') {
+
+				if (vibir_comp(power_o) == 0 || vibir_comp(power_o) == 1 || moneyo == 0) {
+					Sleep(2000);
+					cout << "I am сheck" << endl;
+					Sleep(1000);
+				}
+				//логіка  чеку
+				else {
+					Sleep(2000);
+
+					raise = moneyo > 50 ? (moneyo * 0.1) : moneyo;
+					cout << "I am raise :" << raise << endl;
+					Sleep(1000);
+					bank += raise;
+					moneyo -= raise;
+
+					for (;;) {
+						z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+						cout << "pass(c)/call(x) :";
+						cin >> hid;
+						if (hid == 'x') {
+							if (moneyu > raise) {
+								moneyu -= raise;
+								bank += raise;
+							}
+							else {
+								bank += moneyu;
+								moneyu = 0;
+								
+									all_in(); Sleep(1500);
+								
+							}
+							break;
+						}
+						else if (hid == 'c') {
+							moneyo += bank;
+							bank = 0;
+							pas = true;
+							ret = 1;
+							break;
+						}
+						else {
+							cout << "Error, Please repeat" << endl;
+							Sleep(2000);
+						}
+					}
+					if (pas == true) {
+						break;
+					}
+					//вибір юзера
+				}
+				z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+				Sleep(5000);
+				break;
+		}
+		
+			//логіка на кол
+		else {
+				cout << "Error, Please repeat" << endl;
+				Sleep(2000);
+
+		}
+		
+	}
+	
+	
+	return ret;
+}
+int logic2(int z) {
+	int power_o = scan_combination(pkaru, pkaro), raise;
+	char hid;
+	bool pas = false, treba_hid = true;;
+	int ret = 0;
+
+	for (;;) {
+		z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+		//перевірка частини гри
+
+		if (vibir_comp == 0) {
+			Sleep(2000);
+			cout << "I am pass" << endl;
+			pas = true;
+			ret = 2;
+			Sleep(1000);
+			break;
+		}
+		else if ( vibir_comp(power_o) == 1 || moneyo == 0) {
+			Sleep(2000);
+			cout << "I am сheck" << endl;
+			Sleep(1000);
+		}
+		//логіка  чеку
+		else {
+			Sleep(2000);
+
+			raise = moneyo > 50 ? (moneyo * 0.1) : moneyo;
+			cout << "I am raise :" << raise << endl;
+			treba_hid = false;
+			Sleep(1000);
+			bank += raise;
+			moneyo -= raise;
+
+			for (;;) {
+				z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+				cout << "pass(c)/call(x) :";
+				cin >> hid;
+				if (hid == 'x') {
+					if (moneyu > raise) {
+						moneyu -= raise;
+						bank += raise;
+					}
+					else {
+						bank += moneyu;
+						moneyu = 0;
+
+						all_in(); Sleep(1500);
+
+					}
+					break;
+				}
+				else if (hid == 'c') {
+					moneyo += bank;
+					bank = 0;
+					pas = true;
+					ret = 1;
+					break;
+				}
+				else {
+					cout << "Error, Please repeat" << endl;
+					Sleep(2000);
+				}
+			}
+			if (pas == true) {
+				break;
+			}
+			//вибір компютера
+
+		}
+		z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+
+	
+		break;
+	}
+	if (treba_hid && !pas) {
+		
+		for (;;) {
+			cout << "raise(z)/chek(x)";
+		    cin >> hid;
+			if (hid == 'z') {
+				cout << "vvedit na skiki pidv:";
+				cin >> raise;
+
+				if (raise <= moneyu) {
+					bank += raise;
+					moneyu -= raise;
+
+					if (moneyu == 0) {
+						all_in(); Sleep(1500);
+					}
+					z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+				
+
+
+
+
+					if (vibir_comp(power_o) == 0) {
+						Sleep(2000);
+						cout << "I am pass" << endl;
+						Sleep(1000);
+						moneyu += bank;
+						bank = 0;
+						pas = true;
+						ret = 2;
+						break;
+
+
+					}
+					//логіка  на фолд
+					else if (vibir_comp(power_o) == 1 || vibir_comp(power_o) == 2 ) {
+						Sleep(2000);
+						cout << "I am call" << endl;
+						Sleep(1000);
+						if (moneyo > raise) {
+							moneyo -= raise;
+							bank += raise;
+						}
+						else {
+							bank += moneyo;
+							moneyo = 0;
+
+						}
+						if (moneyo == 0) { all_in(); Sleep(1500); }
+						//перевірка  чи хватає грошей для колу
+						break;
+					}
+					//логіка на кол
+					
+				}
+				else
+				{
+						cout << "You do not have so much money" << endl;
+						Sleep(3000);
+						continue;
+				}
+				if (pas == true) {
+					break;
+				}
+			}
+			if (hid == 'x') {
+				Sleep(3000);
+				break;
+			}
+			else {
+				cout << "Error, Please repeat" << endl;
+				Sleep(2000);
+				z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+			}
+		}
+		z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+	}
+
+	return ret;
+}
+void you_win() {
+cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+cout<<"\t\t\t\t	▄▄▄    ▄▄▄                              ▄▄      ▄▄  ▄▄▄▄▄▄   ▄▄▄   ▄▄     ▄▄ "<<endl;
+cout<<"\t\t\t\t	 ██▄  ▄██                               ██      ██  ▀▀██▀▀   ███   ██     ██ "<<endl;
+cout<<"\t\t\t\t	  ██▄▄██    ▄████▄   ██    ██           ▀█▄ ██ ▄█▀    ██     ██▀█  ██     ██ "<<endl;
+cout<<"\t\t\t\t	   ▀██▀    ██▀  ▀██  ██    ██            ██ ██ ██     ██     ██ ██ ██     ██ "<<endl;
+cout<<"\t\t\t\t	    ██     ██    ██  ██    ██            ███▀▀███     ██     ██  █▄██     ▀▀ "<<endl;
+cout<<"\t\t\t\t	    ██     ▀██▄▄██▀  ██▄▄▄███            ███  ███   ▄▄██▄▄   ██   ███        "<<endl;
+cout<<"\t\t\t\t	    ▀▀       ▀▀▀▀     ▀▀▀▀ ▀▀            ▀▀▀  ▀▀▀   ▀▀▀▀▀▀   ▀▀   ▀▀▀     ▀▀ "<<endl;
+cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"<<endl;
+}
+void you_lose() {
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	cout << "\t\t\t\t	▄▄▄    ▄▄▄                               ▄▄          ▄▄▄▄      ▄▄▄▄    ▄▄▄▄▄▄▄▄" << endl;
+	cout << "\t\t\t\t	 ██▄  ▄██                                ██         ██▀▀██   ▄█▀▀▀▀█   ██▀▀▀▀▀▀" << endl;
+	cout << "\t\t\t\t	  ██▄▄██    ▄████▄   ██    ██            ██        ██    ██  ██▄       ██      " << endl;
+	cout << "\t\t\t\t	   ▀██▀    ██▀  ▀██  ██    ██            ██        ██    ██   ▀████▄   ███████ " << endl;
+	cout << "\t\t\t\t	    ██     ██    ██  ██    ██            ██        ██    ██       ▀██  ██      " << endl;
+	cout << "\t\t\t\t	    ██     ▀██▄▄██▀  ██▄▄▄███            ██▄▄▄▄▄▄   ██▄▄██   █▄▄▄▄▄█▀  ██▄▄▄▄▄▄" << endl;
+	cout << "\t\t\t\t	    ▀▀       ▀▀▀▀     ▀▀▀▀ ▀▀            ▀▀▀▀▀▀▀▀    ▀▀▀▀     ▀▀▀▀▀    ▀▀▀▀▀▀▀▀" << endl;
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
+}
+void welcome() {
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	cout << "\t\t\t\t	▄▄      ▄▄ ▄▄▄▄▄▄▄▄  ▄▄           ▄▄▄▄     ▄▄▄▄    ▄▄▄  ▄▄▄  ▄▄▄▄▄▄▄▄ " << endl;
+	cout << "\t\t\t\t	██      ██ ██▀▀▀▀▀▀  ██         ██▀▀▀▀█   ██▀▀██   ███  ███  ██▀▀▀▀▀▀ " << endl;
+	cout << "\t\t\t\t	▀█▄ ██ ▄█▀ ██        ██        ██▀       ██    ██  ████████  ██       " << endl;
+	cout << "\t\t\t\t	 ██ ██ ██  ███████   ██        ██        ██    ██  ██ ██ ██  ███████  " << endl;
+	cout << "\t\t\t\t	 ███▀▀███  ██        ██        ██▄       ██    ██  ██ ▀▀ ██  ██       " << endl;
+	cout << "\t\t\t\t	 ███  ███  ██▄▄▄▄▄▄  ██▄▄▄▄▄▄   ██▄▄▄▄█   ██▄▄██   ██    ██  ██▄▄▄▄▄▄ " << endl;
+	cout << "\t\t\t\t	 ▀▀▀  ▀▀▀  ▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀     ▀▀▀▀     ▀▀▀▀    ▀▀    ▀▀  ▀▀▀▀▀▀▀▀ " << endl;
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
+}
+void all_in(){
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	cout << "\t\t\t\t	    ▄▄     ▄▄        ▄▄                   ▄▄▄▄▄▄   ▄▄▄   ▄▄ " << endl;
+	cout << "\t\t\t\t	   ████    ██        ██                   ▀▀██▀▀   ███   ██ " << endl;
+	cout << "\t\t\t\t	   ████    ██        ██                     ██     ██▀█  ██ " << endl;
+	cout << "\t\t\t\t	  ██  ██   ██        ██                     ██     ██ ██ ██ " << endl;
+	cout << "\t\t\t\t	  ██████   ██        ██         █████       ██     ██  █▄██ " << endl;
+	cout << "\t\t\t\t	 ▄██  ██▄  ██▄▄▄▄▄▄  ██▄▄▄▄▄▄             ▄▄██▄▄   ██   ███ " << endl;
+	cout << "\t\t\t\t	 ▀▀    ▀▀  ▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀             ▀▀▀▀▀▀   ▀▀   ▀▀▀ " << endl;
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
+}
+void who_is_winer(int power_m,int power_o) {
+	if (power_m > power_o) {
+		moneyu += bank;
+		bank = 0;
+		you_win();
+		Sleep(4000);
+	}
+	else if (power_m == power_o) {
+		moneyo += bank / 2;
+		moneyu += bank / 2;
+		bank = 0;
+		Sleep(4000);
+	}
+	else {
+		moneyo += bank;
+		bank = 0;
+		you_lose();
+		Sleep(4000);
+	}
+	showdown();
+	Sleep(5000);
 }

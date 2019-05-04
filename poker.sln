@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.271
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "poker", "poker\poker.vcxproj", "{2AF54786-22E2-4A73-BF70-51913EC940A4}"
 EndProject
@@ -11,6 +11,8 @@ Global
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+		zzz|x64 = zzz|x64
+		zzz|x86 = zzz|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2AF54786-22E2-4A73-BF70-51913EC940A4}.Debug|x64.ActiveCfg = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{2AF54786-22E2-4A73-BF70-51913EC940A4}.Release|x64.Build.0 = Release|x64
 		{2AF54786-22E2-4A73-BF70-51913EC940A4}.Release|x86.ActiveCfg = Release|Win32
 		{2AF54786-22E2-4A73-BF70-51913EC940A4}.Release|x86.Build.0 = Release|Win32
+		{2AF54786-22E2-4A73-BF70-51913EC940A4}.zzz|x64.ActiveCfg = zzz|x64
+		{2AF54786-22E2-4A73-BF70-51913EC940A4}.zzz|x64.Build.0 = zzz|x64
+		{2AF54786-22E2-4A73-BF70-51913EC940A4}.zzz|x86.ActiveCfg = zzz|Win32
+		{2AF54786-22E2-4A73-BF70-51913EC940A4}.zzz|x86.Build.0 = zzz|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
