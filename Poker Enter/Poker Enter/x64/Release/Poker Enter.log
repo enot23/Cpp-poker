@@ -1,0 +1,26 @@
+﻿  Poker Enter.cpp
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(7): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(17): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(19): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(21): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(21): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(22): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(22): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(23): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(23): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(23): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(24): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(25): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(25): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(25): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(26): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(26): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(27): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(27): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\Poker Enter\Poker Enter.cpp(31): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+  Создание кода
+  1 of 12 functions ( 8.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  Poker Enter.vcxproj -> C:\Users\marin\Desktop\Документи\ather\Repository poker\Poker Enter\x64\Release\Poker Enter.exe

@@ -8,7 +8,7 @@
 #include <windows.h>
 using namespace std;
 const string karty[9] = { " 6"," 7"," 8"," 9","10"," J"," Q"," K"," T" };
-int moneyo = 1000, moneyu = 1000, bank = 0, karu[2][5],karo[2][2],karm[2][2];	
+int moneyo = 1000, moneyu = 1000, bank = 0, karu[2][5],karo[2][2],karm[2][2],color;	
 int(*pkaru)[5] = karu;
 	int(*pkarm)[2] = karm;
 	int(*pkaro)[2] = karo;
@@ -37,18 +37,19 @@ int logic(int);
 int logic2(int);
 void you_win();
 void you_lose();
-void welcome();
 void all_in();
 void who_is_winer(int,int);
 
-
+void SetColor(int text, int background)
+{
+	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
+}
 int  main() {
+
+	system("mode con cols=200 lines=50");
+	system("color 1f");
 	
-	//HANDLE hWnd = GetStdHandle(STD_OUTPUT_HANDLE);
-	//COORD bufferSize = { 0, 0 };
-	//SetConsoleScreenBufferSize(hWnd, bufferSize);
-	//system("mode con cols=1300 lines=900");
-	welcome();
 	Sleep(4000);
 	int i, j, nk;
 	ifstream f1("zzz.txt", std::ios::binary);
@@ -232,53 +233,53 @@ int  main() {
 }
 void vvidcart1(){
 	vvidscore();
-
-	cout << "    ___________                                                                                              ___________   ___________" << endl;
-	cout << "    |%%%%%%%%%|                                                                                              |%%%%%%%%%|   |%%%%%%%%%|" << endl;
-	cout << "    |%%%%%%%%%|                                                                                              |%%%%%%%%%|   |%%%%%%%%%|" << endl;
-	cout << "    |%%%%%%%%%|                                                                                              |%%%%%%%%%|   |%%%%%%%%%|" << endl;
-	cout << "    |%%%%%%%%%|                                                                                              |%%%%%%%%%|   |%%%%%%%%%|" << endl;
-	cout << "    |%%%%%%%%%|                                                                                              |%%%%%%%%%|   |%%%%%%%%%|" << endl;
-	cout << "    |%%%%%%%%%|                                                                                              |%%%%%%%%%|   |%%%%%%%%%|" << endl;
+	
+	cout << "    ___________                                                                                                 ___________   ___________" << endl;
+	cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(0, 1); cout << "                                                                                                 ";   SetColor(15, 4); cout << "|%%%%%%%%%|";SetColor(15, 1);  cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
+	cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "                                                                                                 ";  SetColor(15, 4); cout << "|%%%%%%%%%|";SetColor(15, 1);  cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
+	cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "                                                                                                 ";  SetColor(15, 4); cout << "|%%%%%%%%%|";SetColor(15, 1);  cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
+	cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "                                                                                                 ";  SetColor(15, 4); cout << "|%%%%%%%%%|";SetColor(15, 1);  cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
+	cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "                                                                                                 ";  SetColor(15, 4); cout << "|%%%%%%%%%|";SetColor(15, 1);  cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
+	cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "                                                                                                 ";  SetColor(15, 4); cout << "|%%%%%%%%%|";SetColor(15, 1);  cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
 
 	for (int i = 0; i < 4; i++) {
 		if (i == 1) {
 			cout << endl;
-			cout << "    ___________                                          ++++++                                                    " << endl;
-			cout << "    |%%%%%%%%%|                                        ++      ++                                                  " << endl;
-			cout << "    |%%%%%%%%%|                                      ++          ++                                                " << endl;
-			cout << "    |%%%%%%%%%|                                      +    "<<bank<<"                                               " << endl;
-			cout << "    |%%%%%%%%%|                                      ++          ++                                                " << endl;
-			cout << "    |%%%%%%%%%|                                        ++      ++                                                  " << endl;
-			cout << "    |%%%%%%%%%|                                          ++++++                                                    " << endl;
+			cout <<                              "    ___________";                  SetColor(15,1); cout << "                                          ";SetColor(0,7);cout<<"++++++" << endl; SetColor(15,1);
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); SetColor(15,1); cout << "                                        ";SetColor(0,7);cout<<"++      ++" << endl; SetColor(15, 1);
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); SetColor(15,1); cout << "                                      ";SetColor(0,7);cout<<"++          ++" << endl; SetColor(15,1);
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); SetColor(15,1); cout << "                                     ";SetColor(0,7);cout<<"+     " << bank<<"     +"<< endl; SetColor(15,1);
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); SetColor(15,1); cout << "                                      ";SetColor(0,7);cout<<"++          ++" << endl; SetColor(15,1);
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); SetColor(15,1); cout << "                                        ";SetColor(0,7);cout<<"++      ++" << endl; SetColor(15,1);
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); SetColor(15,1); cout << "                                          ";SetColor(0,7);cout<<"++++++" << endl; SetColor(15,1);
 		}
 		//перевірка де виводити банк
 		else {
 			cout << endl;
 			cout << "    ___________   " << endl;
-			cout << "    |%%%%%%%%%|   " << endl;
-			cout << "    |%%%%%%%%%|   " << endl;
-			cout << "    |%%%%%%%%%|   " << endl;
-			cout << "    |%%%%%%%%%|   " << endl;
-			cout << "    |%%%%%%%%%|   " << endl;
-			cout << "    |%%%%%%%%%|   " << endl;
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+			cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
 		}
 	}
 	vvidcartm();
 }
 void vvidcartm() {
     cout << endl;
-	cout << "                                                                                                            " << m[karm[1][0]].l1 << m[karm[1][1]].l1 << endl;
-	cout << "                                                                                                            " << m[karm[1][0]].l2 << m[karm[1][1]].l2 << endl;
-	cout << "                                                                                                            " << m[karm[1][0]].l3 << m[karm[1][1]].l3 << endl;
-	cout << "                                                                                                            " << m[karm[1][0]].l41 << karty[karm[0][0]] << m[karm[1][0]].l42 << m[karm[1][1]].l41 << karty[karm[0][1]] << m[karm[1][1]].l42 << endl;
-	cout << "                                                                                                            " << m[karm[1][0]].l5 << m[karm[1][1]].l5 << endl;
-	cout << "                                                                                                            " << m[karm[1][0]].l6 << m[karm[1][1]].l6 << endl;
-	cout << "                                                                                                            " << m[karm[1][0]].l7 << m[karm[1][1]].l7 << endl;
+	cout << "                                                                                                               "; color = (karm[1][0] == 1 || karm[1][0] == 2) ? 0 : 4; SetColor(color,7);cout << m[karm[1][0]].l1                                            ; SetColor(15,1);cout<<"  " ; color = (karm[1][1] == 1|| karm[1][1] == 2)? 0 : 4; SetColor(color,7);cout << m[karm[1][1]].l1 << endl;                                            SetColor(15,1);
+	cout << "                                                                                                               "; color = (karm[1][0] == 1 || karm[1][0] == 2) ? 0 : 4; SetColor(color,7);cout << m[karm[1][0]].l2                                            ; SetColor(15,1);cout<<"  " ; color = (karm[1][1] == 1|| karm[1][1] == 2)? 0 : 4; SetColor(color,7);cout << m[karm[1][1]].l2 << endl;                                            SetColor(15,1);
+	cout << "                                                                                                               "; color = (karm[1][0] == 1 || karm[1][0] == 2) ? 0 : 4; SetColor(color,7);cout << m[karm[1][0]].l3                                            ; SetColor(15,1);cout<<"  " ; color = (karm[1][1] == 1|| karm[1][1] == 2)? 0 : 4; SetColor(color,7);cout << m[karm[1][1]].l3 << endl;                                            SetColor(15,1);
+	cout << "                                                                                                               "; color = (karm[1][0] == 1 || karm[1][0] == 2) ? 0 : 4; SetColor(color,7);cout << m[karm[1][0]].l41<< karty[karm[0][0]] << m[karm[1][0]].l42  ; SetColor(15,1);cout<<"  " ; color = (karm[1][1] == 1|| karm[1][1] == 2)? 0 : 4; SetColor(color,7);cout << m[karm[1][1]].l41 << karty[karm[0][1]] << m[karm[1][1]].l42 << endl; SetColor(15,1);
+	cout << "                                                                                                               "; color = (karm[1][0] == 1 || karm[1][0] == 2) ? 0 : 4; SetColor(color,7);cout << m[karm[1][0]].l5                                            ; SetColor(15,1);cout<<"  " ; color = (karm[1][1] == 1|| karm[1][1] == 2)? 0 : 4; SetColor(color,7);cout << m[karm[1][1]].l5 << endl;                                            SetColor(15,1);
+	cout << "                                                                                                               "; color = (karm[1][0] == 1 || karm[1][0] == 2) ? 0 : 4; SetColor(color,7);cout << m[karm[1][0]].l6                                            ; SetColor(15,1);cout<<"  " ; color = (karm[1][1] == 1|| karm[1][1] == 2)? 0 : 4; SetColor(color,7);cout << m[karm[1][1]].l6 << endl;                                            SetColor(15,1);
+	cout << "                                                                                                               "; color = (karm[1][0] == 1 || karm[1][0] == 2) ? 0 : 4; SetColor(color,7);cout << m[karm[1][0]].l7                                            ; SetColor(15,1);cout<<"  " ; color = (karm[1][1] == 1|| karm[1][1] == 2)? 0 : 4; SetColor(color,7);cout << m[karm[1][1]].l7 << endl;                                            SetColor(15,1);
 
-	cout << "                                                                                                            __________________________\n";
-	cout << "                                                                                                              Your money:" << moneyu << "$\n";
-	cout << "                                                                                                            __________________________\n";
+	cout << "                                                                                                               __________________________\n";
+	cout << "                                                                                                                 Your money:" << moneyu << "$\n";
+	cout << "                                                                                                               __________________________\n";
 }
 void flop( int r) {
 	vvidscore();
@@ -286,34 +287,34 @@ void flop( int r) {
 	for (int i = 1; i <= r; i++) {
 		if (i == 2) {
 			cout << endl;
-			cout << "   " << m[karu[1][i]].l1 << "                                          ++++++    " << endl;
-			cout << "   " << m[karu[1][i]].l2 << "                                        ++      ++  " << endl;
-			cout << "   " << m[karu[1][i]].l3 << "                                      ++          ++" << endl;
-			cout << "   " << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << "                                      +   " << bank << endl;
-			cout << "   " << m[karu[1][i]].l5 << "                                      ++          ++ " << endl;
-			cout << "   " << m[karu[1][i]].l6 << "                                        ++      ++   " << endl;
-			cout << "   " << m[karu[1][i]].l7 << "                                          ++++++     " << endl;
-		}
-		else {
-			cout << endl;
-			cout << "   " << m[karu[1][i]].l1 << endl;
-			cout << "   " << m[karu[1][i]].l2 << endl;
-			cout << "   " << m[karu[1][i]].l3 << endl;
-			cout << "   " << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << endl;
-			cout << "   " << m[karu[1][i]].l5 << endl;
-			cout << "   " << m[karu[1][i]].l6 << endl;
-			cout << "   " << m[karu[1][i]].l7 << endl;
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l1                                               ;SetColor(15,1); cout << "                                          ";SetColor(0,7);cout<<"++++++" << endl; SetColor(15,1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l2                                               ;SetColor(15,1); cout << "                                        ";SetColor(0,7);cout<<"++      ++" << endl; SetColor(15, 1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l3                                               ;SetColor(15,1); cout << "                                      ";SetColor(0,7);cout<<"++          ++" << endl; SetColor(15,1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42    ;SetColor(15,1); cout << "                                     ";SetColor(0,7);cout<<"+     " << bank<<"     +"<< endl; SetColor(15,1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l5                                               ;SetColor(15,1); cout << "                                      ";SetColor(0,7);cout<<"++          ++" << endl; SetColor(15,1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l6                                               ;SetColor(15,1); cout << "                                        ";SetColor(0,7);cout<<"++      ++" << endl; SetColor(15,1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l7                                               ;SetColor(15,1); cout << "                                          ";SetColor(0,7);cout<<"++++++" << endl; SetColor(15,1);
+		}					  												         
+		else {				  												         
+			cout << endl; 	 												         
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l1 << endl;SetColor(15,1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l2 << endl;SetColor(15,1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l3 << endl;SetColor(15,1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << endl; SetColor(15, 1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l5 << endl; SetColor(15, 1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l6 << endl; SetColor(15, 1);
+			cout << "   ";  color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;      SetColor(color,7);cout << m[karu[1][i]].l7 << endl; SetColor(15, 1);
 		}
 	}
 	for (int i = ++r; i < 5; i++) {
 		cout << endl;
 		cout << "    ___________   " << endl;
-		cout << "    |%%%%%%%%%|   " << endl;
-		cout << "    |%%%%%%%%%|   " << endl;
-		cout << "    |%%%%%%%%%|   " << endl;
-		cout << "    |%%%%%%%%%|   " << endl;
-		cout << "    |%%%%%%%%%|   " << endl;
-		cout << "    |%%%%%%%%%|   " << endl;
+		cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+		cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+		cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+		cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+		cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
+		cout << "    "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   " << endl;
 	}
 	vvidcartm();
 }
@@ -486,53 +487,53 @@ int scan_combination(int kart[][5], int karu[][2]) {
 void showdown() {
 	vvidscore();
 	cout << endl;  
-	cout << "   " << m[karu[1][0]].l1 << "                                                                                              " << m[karo[1][0]].l1 << m[karo[1][1]].l1 << endl;
-	cout << "   " << m[karu[1][0]].l2 << "                                                                                              " << m[karo[1][0]].l2 << m[karo[1][1]].l2 << endl;
-	cout << "   " << m[karu[1][0]].l3 << "                                                                                              " << m[karo[1][0]].l3 << m[karo[1][1]].l3 << endl;
-	cout << "   " << m[karu[1][0]].l41<< karty[karu[0][0]] << m[karu[1][0]].l42<<"                                                                                              " << m[karo[1][0]].l41 <<karty[karo[0][0]]<< m[karo[1][0]].l42 << m[karo[1][1]].l41<< karty[karo[0][1]] << m[karo[1][1]].l42<<endl;
-	cout << "   " << m[karu[1][0]].l5 << "                                                                                              " << m[karo[1][0]].l5 << m[karo[1][1]].l5 << endl;
-	cout << "   " << m[karu[1][0]].l6 << "                                                                                              " << m[karo[1][0]].l6 << m[karo[1][1]].l6 << endl;
-	cout << "   " << m[karu[1][0]].l7 << "                                                                                              " << m[karo[1][0]].l7 << m[karo[1][1]].l7 << endl;
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][0]].l1; SetColor(15, 1); cout << "                                                                                                 ";												color = (karo[1][0] == 1 || karo[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][0]].l1;												SetColor(15, 1); cout << "  ";	color = (karo[1][1] == 1 || karo[1][1] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][1]].l1 << endl; ; SetColor(15, 1);
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][0]].l2; SetColor(15, 1); cout << "                                                                                                 ";												color = (karo[1][0] == 1 || karo[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][0]].l2;												SetColor(15, 1); cout << "  ";	color = (karo[1][1] == 1 || karo[1][1] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][1]].l2 << endl; ; SetColor(15, 1);
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][0]].l3; SetColor(15, 1); cout << "                                                                                                 ";												color = (karo[1][0] == 1 || karo[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][0]].l3;												SetColor(15, 1); cout << "  ";	color = (karo[1][1] == 1 || karo[1][1] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][1]].l3 << endl; ; SetColor(15, 1);
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][0]].l41 << karty[karu[0][0]] << m[karu[1][0]].l42; SetColor(15, 1); cout << "                                                                                                 ";		color = (karo[1][0] == 1 || karo[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][0]].l41 << karty[karo[0][0]] << m[karo[1][0]].l42;	SetColor(15, 1); cout << "  ";	color = (karo[1][1] == 1 || karo[1][1] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][1]].l41 << karty[karo[0][1]] << m[karo[1][1]].l42 << endl;; SetColor(15, 1);
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][0]].l5; SetColor(15, 1); cout << "                                                                                                 ";												color = (karo[1][0] == 1 || karo[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][0]].l5;												SetColor(15, 1); cout << "  ";	color = (karo[1][1] == 1 || karo[1][1] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][1]].l5 << endl; ; SetColor(15, 1);
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][0]].l6; SetColor(15, 1); cout << "                                                                                                 ";												color = (karo[1][0] == 1 || karo[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][0]].l6;												SetColor(15, 1); cout << "  ";	color = (karo[1][1] == 1 || karo[1][1] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][1]].l6 << endl; ; SetColor(15, 1);
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][0]].l7; SetColor(15, 1); cout << "                                                                                                 ";												color = (karo[1][0] == 1 || karo[1][0] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][0]].l7;												SetColor(15, 1); cout << "  ";	color = (karo[1][1] == 1 || karo[1][1] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karo[1][1]].l7 << endl; ; SetColor(15, 1);
 
 	for (int i = 1; i < 5; i++) {
 		if (i == 2) {
 			cout << endl;
-			cout << "   " << m[karu[1][i]].l1 << "                                          ++++++    " << endl;
-			cout << "   " << m[karu[1][i]].l2 << "                                        ++      ++  " << endl;
-			cout << "   " << m[karu[1][i]].l3 << "                                      ++          ++"<<endl;
-			cout << "   " << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << "                                      +   "<<bank<< endl;
-			cout << "   " << m[karu[1][i]].l5 << "                                      ++          ++ " << endl;
-			cout << "   " << m[karu[1][i]].l6 << "                                        ++      ++   " << endl;
-			cout << "   " << m[karu[1][i]].l7 << "                                          ++++++     "<< endl;
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l1; SetColor(15, 1); cout << "                                          "; SetColor(0, 7); cout << "++++++" << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l2; SetColor(15, 1); cout << "                                        "; SetColor(0, 7); cout << "++      ++" << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l3; SetColor(15, 1); cout << "                                      "; SetColor(0, 7); cout << "++          ++" << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42; SetColor(15, 1); cout << "                                     "; SetColor(0, 7); cout << "+     " << bank << "     +" << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l5; SetColor(15, 1); cout << "                                      "; SetColor(0, 7); cout << "++          ++" << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l6; SetColor(15, 1); cout << "                                        "; SetColor(0, 7); cout << "++      ++" << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l7; SetColor(15, 1); cout << "                                          "; SetColor(0, 7); cout << "++++++" << endl; SetColor(15, 1);
 		}
 		else {
 			cout << endl;
-			cout << "   " << m[karu[1][i]].l1 << endl;
-			cout << "   " << m[karu[1][i]].l2 << endl;
-			cout << "   " << m[karu[1][i]].l3 << endl;
-			cout << "   " << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << endl;
-			cout << "   " << m[karu[1][i]].l5 << endl;
-			cout << "   " << m[karu[1][i]].l6 << endl;
-			cout << "   " << m[karu[1][i]].l7 << endl;
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l1 << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l2 << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l3 << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l41 << karty[karu[0][i]] << m[karu[1][i]].l42 << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l5 << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l6 << endl; SetColor(15, 1);
+			cout << "   ";	color = (karu[1][i] == 1 || karu[1][i] == 2) ? 0 : 4;	SetColor(color, 7); cout << m[karu[1][i]].l7 << endl; SetColor(15, 1);
 		}
 	}
 
 	vvidcartm();
 }
 void vvidscore() {
-	cout << "                                                                                                            __________________________\n";
-	cout << "                                                                                                             Money opponent:" << moneyo << "$\n";
-	cout << "                                                                                                            __________________________\n";
+	cout << "                                                                                                               __________________________\n";
+	cout << "                                                                                                                Money opponent:" << moneyo << "$\n";
+	cout << "                                                                                                               __________________________\n";
 }
 void vvivid_verhnogo_rady() {
 	cout << endl;
-	cout << "   " << m[karu[1][0]].l1 << "                                                                                              ___________   ___________"<<endl;
-	cout << "   " << m[karu[1][0]].l2 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
-	cout << "   " << m[karu[1][0]].l3 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
-	cout << "   " << m[karu[1][0]].l41 << karty[karu[0][0]] << m[karu[1][0]].l42 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
-	cout << "   " << m[karu[1][0]].l5 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
-	cout << "   " << m[karu[1][0]].l6 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
-	cout << "   " << m[karu[1][0]].l7 << "                                                                                              |%%%%%%%%%|   |%%%%%%%%%|"<<endl;
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color,7);cout << m[karu[1][0]].l1 ; SetColor(15, 1); cout<< "                                                                                                 ___________   ___________"<<endl;
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color,7);cout << m[karu[1][0]].l2 ; SetColor(15, 1); cout<< "                                                                                                 "                                           ; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color,7);cout << m[karu[1][0]].l3 ; SetColor(15, 1); cout<< "                                                                                                 "                                           ; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color,7);cout << m[karu[1][0]].l41<< karty[karu[0][0]] << m[karu[1][0]].l42; SetColor(15, 1); cout  << "                                                                                                 "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color,7);cout << m[karu[1][0]].l5 ; SetColor(15, 1); cout<< "                                                                                                 "                                           ; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;	
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color,7);cout << m[karu[1][0]].l6 ; SetColor(15, 1); cout<< "                                                                                                 "                                           ; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
+	cout << "   ";	color = (karu[1][0] == 1 || karu[1][0] == 2) ? 0 : 4;	SetColor(color,7);cout << m[karu[1][0]].l7 ; SetColor(15, 1); cout<< "                                                                                                 "                                           ; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << "   "; SetColor(15, 4); cout << "|%%%%%%%%%|"; SetColor(15, 1); cout << endl;
 }
 int vibir_comp(int power) {
 	int ret;srand(time(NULL));
@@ -791,7 +792,7 @@ int  logic(int z) {
 					//вибір юзера
 				}
 				z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
-				Sleep(5000);
+				Sleep(3000);
 				break;
 		}
 		
@@ -822,22 +823,22 @@ int logic2(int z) {
 			cout << "I am pass" << endl;
 			pas = true;
 			ret = 2;
-			Sleep(1000);
+			Sleep(1500);
 			break;
 		}
 		else if ( vibir_comp(power_o) == 1 || moneyo == 0) {
 			Sleep(2000);
 			cout << "I am сheck" << endl;
-			Sleep(1000);
+			Sleep(1500);
 		}
 		//логіка  чеку
 		else {
-			Sleep(2000);
+			
 
 			raise = moneyo > 50 ? (moneyo * 0.1) : moneyo;
 			cout << "I am raise :" << raise << endl;
+			Sleep(1500);
 			treba_hid = false;
-			Sleep(1000);
 			bank += raise;
 			moneyo -= raise;
 
@@ -869,6 +870,7 @@ int logic2(int z) {
 				else {
 					cout << "Error, Please repeat" << endl;
 					Sleep(2000);
+					z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
 				}
 			}
 			if (pas == true) {
@@ -877,7 +879,8 @@ int logic2(int z) {
 			//вибір компютера
 
 		}
-		z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+		Sleep(1500);
+		
 
 	
 		break;
@@ -907,7 +910,7 @@ int logic2(int z) {
 					if (vibir_comp(power_o) == 0) {
 						Sleep(2000);
 						cout << "I am pass" << endl;
-						Sleep(1000);
+						Sleep(1500);
 						moneyu += bank;
 						bank = 0;
 						pas = true;
@@ -920,7 +923,7 @@ int logic2(int z) {
 					else if (vibir_comp(power_o) == 1 || vibir_comp(power_o) == 2 ) {
 						Sleep(2000);
 						cout << "I am call" << endl;
-						Sleep(1000);
+						Sleep(1500);
 						if (moneyo > raise) {
 							moneyo -= raise;
 							bank += raise;
@@ -957,7 +960,7 @@ int logic2(int z) {
 				z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
 			}
 		}
-		z == 0 ? vvidcart1() : z == 1 ? flop(2) : z == 2 ? flop(3) : flop(4);
+		
 	}
 
 	return ret;
@@ -982,17 +985,6 @@ void you_lose() {
 	cout << "\t\t\t\t	    ██     ██    ██  ██    ██            ██        ██    ██       ▀██  ██      " << endl;
 	cout << "\t\t\t\t	    ██     ▀██▄▄██▀  ██▄▄▄███            ██▄▄▄▄▄▄   ██▄▄██   █▄▄▄▄▄█▀  ██▄▄▄▄▄▄" << endl;
 	cout << "\t\t\t\t	    ▀▀       ▀▀▀▀     ▀▀▀▀ ▀▀            ▀▀▀▀▀▀▀▀    ▀▀▀▀     ▀▀▀▀▀    ▀▀▀▀▀▀▀▀" << endl;
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
-}
-void welcome() {
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-	cout << "\t\t\t\t	▄▄      ▄▄ ▄▄▄▄▄▄▄▄  ▄▄           ▄▄▄▄     ▄▄▄▄    ▄▄▄  ▄▄▄  ▄▄▄▄▄▄▄▄ " << endl;
-	cout << "\t\t\t\t	██      ██ ██▀▀▀▀▀▀  ██         ██▀▀▀▀█   ██▀▀██   ███  ███  ██▀▀▀▀▀▀ " << endl;
-	cout << "\t\t\t\t	▀█▄ ██ ▄█▀ ██        ██        ██▀       ██    ██  ████████  ██       " << endl;
-	cout << "\t\t\t\t	 ██ ██ ██  ███████   ██        ██        ██    ██  ██ ██ ██  ███████  " << endl;
-	cout << "\t\t\t\t	 ███▀▀███  ██        ██        ██▄       ██    ██  ██ ▀▀ ██  ██       " << endl;
-	cout << "\t\t\t\t	 ███  ███  ██▄▄▄▄▄▄  ██▄▄▄▄▄▄   ██▄▄▄▄█   ██▄▄██   ██    ██  ██▄▄▄▄▄▄ " << endl;
-	cout << "\t\t\t\t	 ▀▀▀  ▀▀▀  ▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀     ▀▀▀▀     ▀▀▀▀    ▀▀    ▀▀  ▀▀▀▀▀▀▀▀ " << endl;
 	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
 }
 void all_in(){
