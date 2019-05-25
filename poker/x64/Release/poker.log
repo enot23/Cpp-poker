@@ -2,52 +2,52 @@
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(62): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(63): warning C4101: call: неиспользованная локальная переменная
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(63): warning C4101: fold: неиспользованная локальная переменная
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(539): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(672): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(753): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(838): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(970): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(971): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(540): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(673): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(754): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(839): warning C4244: =: преобразование "double" в "int", возможна потеря данных
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(971): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(971): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(972): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(972): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(972): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(973): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(973): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(974): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(973): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(973): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(974): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(974): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(974): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(975): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(975): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(975): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(976): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(976): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(981): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(982): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(976): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(977): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(982): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(982): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(983): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(983): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(984): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(983): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(984): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(984): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(985): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(985): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(985): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(985): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(986): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(986): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(986): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(987): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(987): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(992): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(993): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(993): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(987): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(988): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(993): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(994): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(994): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(995): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(995): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(996): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(996): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(997): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
 C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(997): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
-C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(998): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(997): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(998): warning C4566: символ, представленный универсальным именем символа "\u2584", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(998): warning C4566: символ, представленный универсальным именем символа "\u2588", невозможно представить в текущей кодовой странице (1251)
+C:\Users\marin\Desktop\Документи\ather\Repository poker\poker\poker.cpp(999): warning C4566: символ, представленный универсальным именем символа "\u2580", невозможно представить в текущей кодовой странице (1251)
   Создание кода
   1 of 181 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation

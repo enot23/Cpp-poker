@@ -47,7 +47,7 @@ void SetColor(int text, int background)
 }
 int  main() {
 
-	system("mode con cols=200 lines=50");
+	//system("mode con cols=200 lines=50");
 	system("color 1f");
 	
 	Sleep(4000);
@@ -229,6 +229,7 @@ int  main() {
 			who_is_winer(power_m, power_o);
 		}
 	}
+	system("start PokerE.exe");
  		return 0;
 }
 void vvidcart1(){
